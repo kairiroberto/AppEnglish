@@ -27,19 +27,21 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
     public static class CenasViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         CardView cv;
-        ImageView imageView;
+        //ImageView imageView;
         TextView nomeCena;
         TextView cenaCena;
         TextView duracaoCena;
         Button botao;
+        Context context;
 
-        public CenasViewHolder(View v) {
+        public CenasViewHolder(View v, Context context) {
             super(v);
+            this.context = context;
             cv = (CardView)v.findViewById(R.id.cvCenas);
             nomeCena = (TextView)v.findViewById(R.id.tvCena_Nome);
             cenaCena = (TextView)v.findViewById(R.id.tvCena_Cenas);
             duracaoCena = (TextView)v.findViewById(R.id.tvCena_Duracao);
-            botao = (Button) v.findViewById(R.id.btAcessarCena);
+            botao = (Button)v.findViewById(R.id.btAcessarCena);
         }
 
     }
@@ -51,13 +53,13 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
 
     @Override
     public CenasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_filmes, parent, false);
-        CenasViewHolder vh = new CenasViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_cenas, parent, false);
+        CenasViewHolder vh = new CenasViewHolder(v, this.context);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(CenasViewHolder holder, int position) {
+    public void onBindViewHolder(final CenasViewHolder holder, int position) {
         //holder.imageView.findViewById(R.id.imageView);
         holder.nomeCena.setText("Fime: " + mDataset.get(position).nomeCena);
         holder.cenaCena.setText("Cena: " + mDataset.get(position).cenaCena);
@@ -65,8 +67,8 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
         holder.botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), TabActivity.class);
-                v.getContext().startActivity(intent);
+                Intent intent = new Intent(holder.context, TabActivity.class);
+                holder.context.startActivity(intent);
             }
         });
     }

@@ -28,13 +28,13 @@ public class CenasActivity extends AppCompatActivity {
             mRecyclerView.setHasFixedSize(true);
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
-            List<Filme> myDataset = new ArrayList<Filme>();
-            myDataset.add(new Filme("Filme 1", "1", "10:00"));
-            myDataset.add(new Filme("Filme 1", "2", "20:00"));
-            myDataset.add(new Filme("Filme 1", "3", "30:00"));
-            myDataset.add(new Filme("Filme 1", "4", "40:00"));
-            myDataset.add(new Filme("Filme 1", "5", "50:00"));
-            mAdapter = new MyAdapterFilmes(myDataset, this);
+            List<Cena> myDataset = new ArrayList<Cena>();
+            myDataset.add(new Cena("Filme 1", "1", "10:00"));
+            myDataset.add(new Cena("Filme 1", "2", "20:00"));
+            myDataset.add(new Cena("Filme 1", "3", "30:00"));
+            myDataset.add(new Cena("Filme 1", "4", "40:00"));
+            myDataset.add(new Cena("Filme 1", "5", "50:00"));
+            mAdapter = new MyAdapterCenas(myDataset, this);
             mRecyclerView.setAdapter(mAdapter);
         }
         catch (Exception e) {

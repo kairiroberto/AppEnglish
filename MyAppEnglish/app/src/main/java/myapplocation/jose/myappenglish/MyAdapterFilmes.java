@@ -33,7 +33,7 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
         Button botao;
         Context context;
 
-        public FilmesViewHolder(View v) {
+        public FilmesViewHolder(View v, Context context) {
             super(v);
             this.context = context;
             cv = (CardView)v.findViewById(R.id.cvFilmes);
@@ -53,7 +53,7 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
     @Override
     public FilmesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_filmes, parent, false);
-        FilmesViewHolder vh = new FilmesViewHolder(v);
+        FilmesViewHolder vh = new FilmesViewHolder(v, this.context);
         return vh;
     }
 
@@ -66,8 +66,8 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
         holder.botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), CenasActivity.class);
-                v.getContext().startActivity(intent);
+                Intent intent = new Intent(holder.context, CenasActivity.class);
+                holder.context.startActivity(intent);
             }
         });
     }
