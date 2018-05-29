@@ -52,7 +52,7 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
 
     @Override
     public FilmesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_filmes, parent, false);
+        View v = LayoutInflater.from(this.context).inflate(R.layout.activity_card_filmes, parent, false);
         FilmesViewHolder vh = new FilmesViewHolder(v, this.context);
         return vh;
     }

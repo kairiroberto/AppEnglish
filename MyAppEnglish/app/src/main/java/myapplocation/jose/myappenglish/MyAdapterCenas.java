@@ -53,7 +53,7 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
 
     @Override
     public CenasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_cenas, parent, false);
+        View v = LayoutInflater.from(this.context).inflate(R.layout.activity_card_cenas, parent, false);
         CenasViewHolder vh = new CenasViewHolder(v, this.context);
         return vh;
     }
