@@ -13,10 +13,11 @@
     <VideoView
         android:id="@+id/vvPraticar"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center_horizontal" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvTreinar"
+        android:id="@+id/rvPraticar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
