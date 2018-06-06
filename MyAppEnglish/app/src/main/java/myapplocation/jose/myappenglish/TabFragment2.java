@@ -33,8 +33,25 @@ public class TabFragment2 extends Fragment {
         mAdapter = new TabFragment1Adapter(myDataset, view.getContext());
         mRecyclerView.setAdapter(mAdapter);
         vvPraticar = (VideoView) view.findViewById(R.id.vvPraticar);
-        vvPraticar.setVideoPath("/sdcard/Download/f1.mp4");
-        vvPraticar.start();
         return view;
     }
+
+    private void onPlayVideo(){
+        String[] videos = new String[10];
+        videos[0] = "/sdcard/Download/f1-1.mp4";
+        videos[1] = "/sdcard/Download/f1-2.mp4";
+        videos[2] = "/sdcard/Download/f1-3.mp4";
+        videos[3] = "/sdcard/Download/f1-4.mp4";
+        videos[4] = "/sdcard/Download/f1-5.mp4";
+        videos[5] = "/sdcard/Download/f1-6.mp4";
+        videos[6] = "/sdcard/Download/f1-7.mp4";
+        videos[7] = "/sdcard/Download/f1-8.mp4";
+        videos[8] = "/sdcard/Download/f1-9.mp4";
+        videos[9] = "/sdcard/Download/f1-10.mp4";
+        for (int i = 0; i < videos.length; i++) {
+            vvPraticar.setVideoPath(videos[i]);
+            vvPraticar.start();
+        }
+    }
+
 }
