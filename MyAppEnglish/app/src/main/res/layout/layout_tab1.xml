@@ -5,17 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvAssistir"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Assistir" />
-
     <VideoView
         android:id="@+id/vvAssistir"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center_vertical|center_horizontal" />
+
+    <Button
+        android:id="@+id/btFilmePlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Começar" />
+
+    <Button
+        android:id="@+id/btFilmeStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Parar" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvAssistir"

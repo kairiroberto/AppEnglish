@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/tvGravar"
@@ -10,9 +12,56 @@
         android:layout_height="wrap_content"
         android:text="Gravar" />
 
-    <ListView
+    <VideoView
+        android:id="@+id/vvGravacao"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center_horizontal" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="2"
+        android:stretchColumns="2">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rb1Personagem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="1º Personagem" />
+
+                <RadioButton
+                    android:id="@+id/rb2Personagem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2º Personagem" />
+
+            </RadioGroup>
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btGravacaoComecar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Começar" />
+
+    <Button
+        android:id="@+id/btGravacaoSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar" />
 
 </LinearLayout>
