@@ -13,11 +13,13 @@ public class Filme implements Serializable {
     String nomeFilme;
     String cenasFilme;
     String duracaoFilme;
+    int imagem;
 
-    public Filme (String nomeFilme, String cenasFilme, String duracaoFilme) {
+    public Filme (String nomeFilme, String cenasFilme, String duracaoFilme, int imagem) {
         this.nomeFilme = nomeFilme;
         this.cenasFilme = cenasFilme;
         this.duracaoFilme = duracaoFilme;
+        this.imagem = imagem;
     }
 
 }

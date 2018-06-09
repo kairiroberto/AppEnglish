@@ -2,6 +2,8 @@ package myapplocation.jose.myappenglish;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +33,7 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
         TextView nomeCena;
         TextView cenaCena;
         TextView duracaoCena;
+        ImageView imageCena;
         Button botao;
         Context context;
 
@@ -38,6 +41,7 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
             super(v);
             this.context = context;
             cv = (CardView)v.findViewById(R.id.cvCenas);
+            imageCena = (ImageView) v.findViewById(R.id.imageCena);
             nomeCena = (TextView)v.findViewById(R.id.tvCena_Nome);
             cenaCena = (TextView)v.findViewById(R.id.tvCena_Cenas);
             duracaoCena = (TextView)v.findViewById(R.id.tvCena_Duracao);
@@ -64,6 +68,11 @@ class MyAdapterCenas extends RecyclerView.Adapter<MyAdapterCenas.CenasViewHolder
         holder.nomeCena.setText("Fime: " + mDataset.get(position).nomeCena);
         holder.cenaCena.setText("Cena: " + mDataset.get(position).cenaCena);
         holder.duracaoCena.setText("Duração: " + mDataset.get(position).duracaoCena);
+        if (mDataset.get(position).imagem != 0) {
+            holder.imageCena.setImageResource(mDataset.get(position).imagem);
+        } else {
+            holder.imageCena.setImageResource(R.mipmap.ic_launcher);
+        }
         holder.botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

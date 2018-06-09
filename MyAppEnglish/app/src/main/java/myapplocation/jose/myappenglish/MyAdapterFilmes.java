@@ -30,6 +30,7 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
         TextView nomeFilme;
         TextView cenasFilme;
         TextView duracaoFilme;
+        ImageView imageFilme;
         Button botao;
         Context context;
 
@@ -37,6 +38,7 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
             super(v);
             this.context = context;
             cv = (CardView)v.findViewById(R.id.cvFilmes);
+            imageFilme = (ImageView) v.findViewById(R.id.imageFilme);
             nomeFilme = (TextView)v.findViewById(R.id.tvFilme_Nome);
             cenasFilme = (TextView)v.findViewById(R.id.tvFilme_Cenas);
             duracaoFilme = (TextView)v.findViewById(R.id.tvFilme_Duracao);
@@ -63,6 +65,11 @@ class MyAdapterFilmes extends RecyclerView.Adapter<MyAdapterFilmes.FilmesViewHol
         holder.nomeFilme.setText("Filme: " + mDataset.get(position).nomeFilme);
         holder.cenasFilme.setText("Cenas: " + mDataset.get(position).cenasFilme);
         holder.duracaoFilme.setText("Duração: " + mDataset.get(position).duracaoFilme);
+        if (mDataset.get(position).imagem != 0) {
+            holder.imageFilme.setImageResource(mDataset.get(position).imagem);
+        } else {
+            holder.imageFilme.setImageResource(R.mipmap.ic_launcher);
+        }
         holder.botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

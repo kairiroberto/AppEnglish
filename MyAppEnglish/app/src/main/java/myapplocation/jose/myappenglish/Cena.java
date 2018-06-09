@@ -11,11 +11,13 @@ public class Cena implements Serializable {
     String nomeCena;
     String cenaCena;
     String duracaoCena;
+    int imagem;
 
-    public Cena (String nomeCena, String cenaCena, String duracaoCena) {
+    public Cena (String nomeCena, String cenaCena, String duracaoCena, int imagem) {
         this.nomeCena = nomeCena;
         this.cenaCena = cenaCena;
         this.duracaoCena = duracaoCena;
+        this.imagem = imagem;
     }
 
 }

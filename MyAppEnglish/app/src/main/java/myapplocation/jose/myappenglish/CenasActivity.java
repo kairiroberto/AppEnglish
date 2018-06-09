@@ -29,11 +29,11 @@ public class CenasActivity extends AppCompatActivity {
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
             List<Cena> myDataset = new ArrayList<Cena>();
-            myDataset.add(new Cena("Filme 1", "1", "10:00"));
-            myDataset.add(new Cena("Filme 1", "2", "20:00"));
-            myDataset.add(new Cena("Filme 1", "3", "30:00"));
-            myDataset.add(new Cena("Filme 1", "4", "40:00"));
-            myDataset.add(new Cena("Filme 1", "5", "50:00"));
+            myDataset.add(new Cena("Filme 1", "1", "10:00", R.drawable.vaivsluk));
+            myDataset.add(new Cena("Filme 1", "2", "20:00", 0));
+            myDataset.add(new Cena("Filme 1", "3", "30:00", 0));
+            myDataset.add(new Cena("Filme 1", "4", "40:00", 0));
+            myDataset.add(new Cena("Filme 1", "5", "50:00", 0));
             mAdapter = new MyAdapterCenas(myDataset, this);
             mRecyclerView.setAdapter(mAdapter);
         }
