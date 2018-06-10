@@ -9,3 +9,10 @@ https://medium.com/android-dev-br/listas-com-recyclerview-d3f41e0d653c
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar1.JPG)
 
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar2.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar3.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar4.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar5.JPG)
