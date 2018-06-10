@@ -11,11 +11,13 @@ public class Fala implements Serializable {
     private int id;
     private int cena;
     private String fala;
+    private String video;
 
-    public Fala(int id, int cena, String fala) {
+    public Fala(int id, int cena, String fala, String video) {
         this.id = id;
         this.cena = cena;
         this.fala = fala;
+        this.video = video;
     }
 
     public int getId() {
@@ -41,4 +43,13 @@ public class Fala implements Serializable {
     public void setFala(String fala) {
         this.fala = fala;
     }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
 }
