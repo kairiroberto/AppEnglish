@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import myapplocation.jose.myappenglish.R;
-import myapplocation.jose.myappenglish.controll.layout.TabFragment1Adapter;
+import myapplocation.jose.myappenglish.controll.layout.AdapterTabFragment1;
 import myapplocation.jose.myappenglish.model.Fala;
 
 public class TabFragment1 extends Fragment {
@@ -40,19 +40,7 @@ public class TabFragment1 extends Fragment {
         mLayoutManager = new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        List<Fala> myDataset = new ArrayList<Fala>();
-        myDataset.add(new Fala(1, 1, "Fala 1: Vaider: No I am your father. \n(Vaider: Não Eu sou o seu pai.)"));
-        myDataset.add(new Fala(1, 1, "Fala 2: Luke: No. No. No. That's not true. It's impossible. \n(Luke: Não. Não. Não é verdade. É impossível.)"));
-        myDataset.add(new Fala(1, 1, "Fala 3: Vaider: Listen your heart. You know it's true. \n(Vaider: Ouça o seu coração. Sabe que é verdade.)"));
-        myDataset.add(new Fala(1, 1, "Fala 4: Luke: No. No. \n(Luke: Não. Não.)"));
-        myDataset.add(new Fala(1, 1, "Fala 5: Vaider: Luke, you can destroy the Emperor. He already foresaw this. \n(Vaider: Luke, você pode destruir o Imperador. Ele já previu isso.)"));
-        myDataset.add(new Fala(1, 1, "Fala 6: Vaider: It is your destiny. Join me. \n(Vaider: É o seu destino. Junte-se a mim.)"));
-        myDataset.add(new Fala(1, 1, "Fala 7: Vaider: Together we can rule the galaxy as father and son. \n(Vaider: Juntos poderemos governar a galáxia como pai e filho.)"));
-        myDataset.add(new Fala(1, 1, "Fala 8: ... \n(...)"));
-        myDataset.add(new Fala(1, 1, "Fala 9: Vaider: Come with me. \n(Vaider: Venha comigo.)"));
-        myDataset.add(new Fala(1, 1, "Fala 10: Vaider: It's your only way out. \n(Vaider: É sua única saída.)"));
-
-        mAdapter = new TabFragment1Adapter(myDataset, view.getContext());
+        mAdapter = new AdapterTabFragment1(MainActivity.criarFalas(), view.getContext());
         mRecyclerView.setAdapter(mAdapter);
 
         vvAssistir = (VideoView) view.findViewById(R.id.vvAssistir);
@@ -85,7 +73,7 @@ public class TabFragment1 extends Fragment {
                 int i = 2;
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if (i <= 10) {
+                    if (i <= MainActivity.criarFalas().size()) {
                         Toast.makeText(context, "Fala: " + String.valueOf(i), Toast.LENGTH_SHORT).show();
                         vvAssistir.setVideoURI(Uri.parse("sdcard/Download/f1-" + i + ".mp4"));
                         vvAssistir.start();

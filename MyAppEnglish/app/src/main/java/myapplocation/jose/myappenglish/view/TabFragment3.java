@@ -57,7 +57,7 @@ public class TabFragment3 extends Fragment {
 
     private void onOuvirVideo() {
         try {
-            if (i <= 10) {
+            if (i <= MainActivity.criarFalas().size()) {
                 TabFragment1.onStopVideoAssistir();
                 TabFragment2.onStopVideoPraticar();
                 vvGravacao.setVideoURI(Uri.parse("/sdcard/Download/f1-" + String.valueOf(i) + ".mp4"));
@@ -72,7 +72,7 @@ public class TabFragment3 extends Fragment {
 
     private void onGravarVideo() {
         try {
-            if (i <= 10) {
+            if (i <= MainActivity.criarFalas().size()) {
                 i++;
                 File file = new File("/storage/extSdCard/w1" + String.valueOf(i) + ".mp4");
                 Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);

@@ -9,7 +9,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import myapplocation.jose.myappenglish.controll.layout.MyAdapterFilmes;
+import myapplocation.jose.myappenglish.controll.layout.AdapterFilmes;
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.model.Filme;
 
@@ -29,14 +29,7 @@ public class FilmesActivity extends AppCompatActivity {
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
 
-            List<Filme> myDataset = new ArrayList<Filme>();
-            myDataset.add(new Filme(1, "Filme 1", "10", "10:00", R.drawable.vaivsluk));
-            myDataset.add(new Filme(2, "Filme 2", "20", "20:00", 0));
-            myDataset.add(new Filme(3, "Filme 3", "30", "30:00", 0));
-            myDataset.add(new Filme(4, "Filme 4", "40", "40:00", 0));
-            myDataset.add(new Filme(5, "Filme 5", "50", "50:00", 0));
-
-            mAdapter = new MyAdapterFilmes(myDataset, this);
+            mAdapter = new AdapterFilmes(MainActivity.criarFilmes(), this);
             mRecyclerView.setAdapter(mAdapter);
         }
         catch (Exception e) {
