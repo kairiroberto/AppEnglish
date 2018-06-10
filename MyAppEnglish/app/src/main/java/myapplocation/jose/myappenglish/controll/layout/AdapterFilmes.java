@@ -63,7 +63,7 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.FilmesView
     }
 
     @Override
-    public void onBindViewHolder(final FilmesViewHolder holder, int position) {
+    public void onBindViewHolder(final FilmesViewHolder holder, final int position) {
         //holder.imageView.findViewById(R.id.imageView);
         holder.nomeFilme.setText("Filme: " + mDataset.get(position).getNomeFilme());
         holder.cenasFilme.setText("Cenas: " + mDataset.get(position).getCenasFilme());
@@ -77,6 +77,7 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.FilmesView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.context, CenasActivity.class);
+                intent.putExtra("filme", mDataset.get(position).getId());
                 holder.context.startActivity(intent);
             }
         });

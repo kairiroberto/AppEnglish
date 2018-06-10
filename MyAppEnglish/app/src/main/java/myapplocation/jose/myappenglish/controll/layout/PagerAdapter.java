@@ -14,10 +14,16 @@ import myapplocation.jose.myappenglish.view.TabFragment3;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
+    static int cena;
 
-    public PagerAdapter(FragmentManager fm, int NumOfTabs) {
+    public PagerAdapter(FragmentManager fm, int NumOfTabs, int cena) {
         super(fm);
+        this.cena = cena;
         this.mNumOfTabs = NumOfTabs;
+    }
+
+    public static int getCena() {
+        return cena;
     }
 
     @Override

@@ -15,6 +15,7 @@ import java.util.List;
 
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.model.Cena;
+import myapplocation.jose.myappenglish.view.TabActivity;
 
 /**
  * Created by JOSE on 24-5-18.
@@ -62,7 +63,7 @@ public class AdapterCenas extends RecyclerView.Adapter<AdapterCenas.CenasViewHol
     }
 
     @Override
-    public void onBindViewHolder(final CenasViewHolder holder, int position) {
+    public void onBindViewHolder(final CenasViewHolder holder, final int position) {
         //holder.imageView.findViewById(R.id.imageView);
         holder.nomeCena.setText("Fime: " + mDataset.get(position).getNomeCena());
         holder.cenaCena.setText("Cena: " + mDataset.get(position).getCenaCena());
@@ -76,6 +77,7 @@ public class AdapterCenas extends RecyclerView.Adapter<AdapterCenas.CenasViewHol
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.context, TabActivity.class);
+                intent.putExtra("cena", mDataset.get(position).getId());
                 holder.context.startActivity(intent);
             }
         });

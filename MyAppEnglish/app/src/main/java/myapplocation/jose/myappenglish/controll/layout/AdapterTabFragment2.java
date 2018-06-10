@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import myapplocation.jose.myappenglish.R;
+import myapplocation.jose.myappenglish.model.Fala;
 import myapplocation.jose.myappenglish.view.TabFragment1;
 import myapplocation.jose.myappenglish.view.TabFragment2;
 
@@ -22,7 +23,7 @@ import myapplocation.jose.myappenglish.view.TabFragment2;
 
 public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment2.Tab1ViewHolder> {
 
-    private List<String> mDataset;
+    private List<Fala> mDataset;
     private Context context;
     private final Handler handler = new Handler();
 
@@ -45,7 +46,7 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
 
     }
 
-    public AdapterTabFragment2(List<String> myDataset, Context context) {
+    public AdapterTabFragment2(List<Fala> myDataset, Context context) {
         mDataset = myDataset;
         this.context = context;
     }
@@ -60,7 +61,7 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
     @Override
     public void onBindViewHolder(final Tab1ViewHolder holder, final int position) {
         //holder.imageView.findViewById(R.id.imageView);
-        holder.frase.setText(mDataset.get(position));
+        holder.frase.setText(mDataset.get(position).getFala());
         if (position % 2 == 0) {
             holder.frase.setTextColor(Color.RED);
         } else {
