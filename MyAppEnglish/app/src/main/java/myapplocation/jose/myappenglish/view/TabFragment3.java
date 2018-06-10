@@ -3,14 +3,10 @@ package myapplocation.jose.myappenglish.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +15,9 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.File;
-import java.io.IOException;
-import java.sql.Time;
-import java.util.Date;
 
 import myapplocation.jose.myappenglish.R;
+import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
 
 public class TabFragment3 extends Fragment {
 
@@ -31,12 +25,14 @@ public class TabFragment3 extends Fragment {
     private VideoView vvGravacao;
     private Context context;
     private int i = 1;
+    private int cena = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_tab3, container, false);
         context = view.getContext();
         vvGravacao = (VideoView) view.findViewById(R.id.vvGravacao);
+
         btGravacaoOuvir = (Button) view.findViewById(R.id.btGravacaoOuvir);
         btGravacaoOuvir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +40,7 @@ public class TabFragment3 extends Fragment {
                 onOuvirVideo();
             }
         });
+
         btGravacaoGravar = (Button) view.findViewById(R.id.btGravacaoGravar);
         btGravacaoGravar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,16 +48,20 @@ public class TabFragment3 extends Fragment {
                 onGravarVideo();
             }
         });
+
         btGravacaoSalvar = (Button) view.findViewById(R.id.btGravacaoSalvar);
+
+        this.cena = PagerAdapter.getCena();
+
         return view;
     }
 
     private void onOuvirVideo() {
         try {
-            if (i <= MainActivity.criarFalas().size()) {
+            if (i <= MainActivity.listarFalas().size()) {
                 TabFragment1.onStopVideoAssistir();
                 TabFragment2.onStopVideoPraticar();
-                vvGravacao.setVideoURI(Uri.parse("/sdcard/Download/f1-" + String.valueOf(i) + ".mp4"));
+                vvGravacao.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(this.cena).get(i-1).getVideo() + String.valueOf(i) + ".mp4"));
                 vvGravacao.start();
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
@@ -72,15 +73,18 @@ public class TabFragment3 extends Fragment {
 
     private void onGravarVideo() {
         try {
-            if (i <= MainActivity.criarFalas().size()) {
+            if (i <= MainActivity.listarFalasIdCena(this.cena).size()) {
                 i++;
-                File file = new File("/storage/extSdCard/w1" + String.valueOf(i) + ".mp4");
+                File file = new File("/storage/extSdCard/w1-" + String.valueOf(MainActivity.listarFalas().size()) + "-" + String.valueOf(i) + ".mp4");
                 Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                 startActivityForResult(intent, 0);
                 i++;
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
+                btGravacaoGravar.setText("Gravar (Não)");
+                btGravacaoOuvir.setText("Ouvir Personagem (Não)");
+                btGravacaoSalvar.setText("Salvar (Sim)");
             }
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();

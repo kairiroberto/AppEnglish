@@ -1,6 +1,8 @@
 package myapplocation.jose.myappenglish.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,22 +16,20 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.controll.layout.AdapterTabFragment1;
-import myapplocation.jose.myappenglish.model.Fala;
+import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
 
-public class TabFragment1 extends Fragment {
+public class TabFragment1 extends Fragment implements View.OnClickListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static VideoView vvAssistir;
-    private Button btFilmePlay, btFilmeStop;
+    private Button btFilmePlay;
+    private Button btFilmeStop;
     private static Context context;
-
+    private int cena = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,49 +40,51 @@ public class TabFragment1 extends Fragment {
         mLayoutManager = new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new AdapterTabFragment1(MainActivity.criarFalas(), view.getContext());
+        this.cena = PagerAdapter.getCena();
+
+        mAdapter = new AdapterTabFragment1(MainActivity.listarFalasIdCena(this.cena), view.getContext());
         mRecyclerView.setAdapter(mAdapter);
 
         vvAssistir = (VideoView) view.findViewById(R.id.vvAssistir);
         btFilmePlay = (Button) view.findViewById(R.id.btFilmePlay);
         btFilmeStop = (Button) view.findViewById(R.id.btFilmeStop);
 
-        btFilmePlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onPlayVideoAssistir();
-            }
-        });
-        btFilmeStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onStopVideoAssistir();
-            }
-        });
+        btFilmePlay.setOnClickListener(this);
+        btFilmeStop.setOnClickListener(this);
 
         return view;
     }
 
-    public static void onPlayVideoAssistir(){
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btFilmePlay) {
+            onPlayVideoAssistir(this.cena);
+        } else if (v.getId() == R.id.btFilmeStop) {
+            onStopVideoAssistir();
+        }
+    }
+
+    public static void onPlayVideoAssistir(final int cena){
         TabFragment2.onStopVideoPraticar();
         try {
-            vvAssistir.setVideoURI(Uri.parse("/sdcard/Download/f1-1.mp4"));
+            int i = 1;
+            vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i-1).getVideo() + i + ".mp4"));
             vvAssistir.start();
-            Toast.makeText(context, "Fala: 1", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fala: 1/" + String.valueOf(MainActivity.listarFalasIdCena(cena).size()), Toast.LENGTH_SHORT).show();
             vvAssistir.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 int i = 2;
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if (i <= MainActivity.criarFalas().size()) {
-                        Toast.makeText(context, "Fala: " + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                        vvAssistir.setVideoURI(Uri.parse("sdcard/Download/f1-" + i + ".mp4"));
+                    if (i <= MainActivity.listarFalasIdCena(cena).size()) {
+                        Toast.makeText(context, "Fala: " + String.valueOf(i) + "/" + MainActivity.listarFalasIdCena(cena).size(), Toast.LENGTH_SHORT).show();
+                        vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i-1).getVideo() + i + ".mp4"));
                         vvAssistir.start();
                         i++;
                     }
                 }
             });
         } catch (Exception e) {
-
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 

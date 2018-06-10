@@ -6,12 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import myapplocation.jose.myappenglish.controll.layout.AdapterFilmes;
 import myapplocation.jose.myappenglish.R;
-import myapplocation.jose.myappenglish.model.Filme;
 
 public class FilmesActivity extends AppCompatActivity {
 
@@ -29,7 +25,7 @@ public class FilmesActivity extends AppCompatActivity {
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
 
-            mAdapter = new AdapterFilmes(MainActivity.criarFilmes(), this);
+            mAdapter = new AdapterFilmes(MainActivity.listarFilmes(), this);
             mRecyclerView.setAdapter(mAdapter);
         }
         catch (Exception e) {

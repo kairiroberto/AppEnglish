@@ -7,18 +7,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import myapplocation.jose.myappenglish.controll.layout.AdapterCenas;
 import myapplocation.jose.myappenglish.R;
-import myapplocation.jose.myappenglish.model.Cena;
 
 public class CenasActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private int filme = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +30,10 @@ public class CenasActivity extends AppCompatActivity {
             Intent intent = getIntent();
             if (intent.getExtras().get("filme") != null) {
                 Toast.makeText(this, intent.getExtras().get("filme").toString(), Toast.LENGTH_SHORT).show();
+                this.filme = (int) intent.getExtras().get("filme");
             }
 
-            mAdapter = new AdapterCenas(MainActivity.criarCenas(), this);
+            mAdapter = new AdapterCenas(MainActivity.listarCenasIdFilme(this.filme), this);
             mRecyclerView.setAdapter(mAdapter);
         }
         catch (Exception e) {
