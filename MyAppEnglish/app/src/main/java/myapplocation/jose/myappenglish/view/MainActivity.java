@@ -10,7 +10,9 @@ import java.util.List;
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.model.Cena;
 import myapplocation.jose.myappenglish.model.Fala;
+import myapplocation.jose.myappenglish.model.FalaUsuario;
 import myapplocation.jose.myappenglish.model.Filme;
+import myapplocation.jose.myappenglish.model.FilmeUsuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +27,38 @@ public class MainActivity extends AppCompatActivity {
         listarCenas();
 
         listarFalas();
-
+        
         Intent intent = new Intent(this, FilmesActivity.class);
         startActivity(intent);
+    }
+
+    private static List<FilmeUsuario> myDatasetFilme;
+    private static List<FalaUsuario> myDatasetFala;
+
+    public static void addFilmesUsuario(FilmeUsuario filmeUsuario) {
+        myDatasetFilme.add(filmeUsuario);
+    }
+
+    public static List<FilmeUsuario> listarFilmesUsuario() {
+        return myDatasetFilme;
+    }
+
+    public static void addFalasUsuario(FalaUsuario falaUsuario) {
+        myDatasetFala.add(falaUsuario);
+    }
+
+    public static List<FalaUsuario> listarFalasUsuario() {
+        return myDatasetFala;
+    }
+
+    public static List<FalaUsuario> listarFalasUsuarioIdFilme(int id) {
+        List<FalaUsuario> myDataset = new ArrayList<FalaUsuario>();
+        for (FalaUsuario fu : myDataset) {
+            if (fu.getFilmeUsuario() == id) {
+                myDataset.add(fu);
+            }
+        }
+        return myDataset;
     }
 
     public static List<Filme> listarFilmes() {
@@ -59,6 +90,16 @@ public class MainActivity extends AppCompatActivity {
         List<Cena> myDataset = new ArrayList<Cena>();
         for (Cena c : listarCenas()) {
             if (c.getFilme() == id) {
+                myDataset.add(c);
+            }
+        }
+        return myDataset;
+    }
+
+    public static List<Cena> listarCenasIdCena(int id) {
+        List<Cena> myDataset = new ArrayList<Cena>();
+        for (Cena c : listarCenas()) {
+            if (c.getId() == id) {
                 myDataset.add(c);
             }
         }
