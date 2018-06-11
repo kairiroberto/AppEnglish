@@ -76,7 +76,7 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.FilmesView
         holder.botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.context, CenasActivity.class);
+                Intent intent = new Intent(context, CenasActivity.class);
                 intent.putExtra("filme", mDataset.get(position).getId());
                 holder.context.startActivity(intent);
             }
