@@ -12,18 +12,21 @@ public class FilmeUsuario implements Serializable {
     private int id;
     private int filme;
     private int cena;
+    private int personagem;
     private Date data;
 
-    public FilmeUsuario(int filme, int cena, Date data) {
+    public FilmeUsuario(int filme, int cena, int personagem, Date data) {
         this.filme = filme;
         this.cena = cena;
         this.data = data;
+        this.personagem = personagem;
     }
 
-    public FilmeUsuario(int id, int filme, int cena, Date data) {
+    public FilmeUsuario(int id, int filme, int cena, int personagem, Date data) {
         this.id = id;
         this.filme = filme;
         this.cena = cena;
+        this.personagem = personagem;
         this.data = data;
     }
 
@@ -60,6 +63,14 @@ public class FilmeUsuario implements Serializable {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public int getPersonagem() {
+        return personagem;
+    }
+
+    public void setPersonagem(int personagem) {
+        this.personagem = personagem;
     }
 
 }
