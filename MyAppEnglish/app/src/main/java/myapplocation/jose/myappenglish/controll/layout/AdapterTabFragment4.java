@@ -14,16 +14,19 @@ import java.util.List;
 
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.model.Fala;
+import myapplocation.jose.myappenglish.model.FilmeUsuario;
+import myapplocation.jose.myappenglish.view.MainActivity;
 import myapplocation.jose.myappenglish.view.TabFragment1;
 import myapplocation.jose.myappenglish.view.TabFragment2;
+import myapplocation.jose.myappenglish.view.TabFragment4;
 
 /**
  * Created by JOSE on 24-5-18.
  */
 
-public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment2.Tab1ViewHolder> {
+public class AdapterTabFragment4 extends RecyclerView.Adapter<AdapterTabFragment4.Tab1ViewHolder> {
 
-    private List<Fala> mDataset;
+    private List<FilmeUsuario> mDataset;
     private Context context;
     private final Handler handler = new Handler();
 
@@ -36,24 +39,19 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
         public Tab1ViewHolder(View v, Context context) {
             super(v);
             this.context = context;
-            cv = (CardView)v.findViewById(R.id.cvTab2);
-            frase = (TextView)v.findViewById(R.id.tvTab2);
+            cv = (CardView)v.findViewById(R.id.cvTab4);
+            frase = (TextView)v.findViewById(R.id.tvTab4);
         }
-
-        public void alterarCor(int position) {
-            frase.setBackgroundColor(Color.GREEN);
-        }
-
     }
 
-    public AdapterTabFragment2(List<Fala> myDataset, Context context) {
+    public AdapterTabFragment4(List<FilmeUsuario> myDataset, Context context) {
         mDataset = myDataset;
         this.context = context;
     }
 
     @Override
     public Tab1ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(this.context).inflate(R.layout.layout_tab2_card, parent, false);
+        final View view = LayoutInflater.from(this.context).inflate(R.layout.layout_tab4_card, parent, false);
         Tab1ViewHolder vh = new Tab1ViewHolder(view, this.context);
         return vh;
     }
@@ -61,7 +59,7 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
     @Override
     public void onBindViewHolder(final Tab1ViewHolder holder, final int position) {
         //holder.imageView.findViewById(R.id.imageView);
-        holder.frase.setText(mDataset.get(position).getFala());
+        holder.frase.setText("Filme:" + mDataset.get(position).getFilme() + " - " + "Cena:" + mDataset.get(position).getCena() + "-" + "Pers.:" + mDataset.get(position).getPersonagem() + "-" + "Tam.: " + MainActivity.listarFalasUsuarioIdFilme(mDataset.get(position).getId()));
         if (position % 2 == 0) {
             holder.frase.setTextColor(Color.RED);
         } else {
@@ -70,7 +68,7 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
         holder.frase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TabFragment2.onPlayVideoPraticar(position);
+                TabFragment4.onPlayMeuVideoAssistir(mDataset.get(position).getId(), mDataset.get(position).getCena(), mDataset.get(position).getPersonagem());
                 if (holder.frase.getCurrentTextColor() == Color.BLUE) {
                     if (position % 2 == 0) {
                         holder.frase.setTextColor(Color.RED);
