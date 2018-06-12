@@ -39,7 +39,9 @@ public class TabFragment3 extends Fragment {
     private RadioButton rb2Personagem;
     private RadioGroup rgPersonagens;
     private Context context;
-    private int personagemSelecionado = 2;
+    private int personagemSelecionado = 1;
+    private int personagem = 1;
+    private int usuario = 0;
     private int falaQuantidade = 0;
     private int cena = 0;
     private FilmeUsuario filmeUsuario = null;
@@ -86,10 +88,12 @@ public class TabFragment3 extends Fragment {
             public void onClick(View v) {
                 rb1Personagem.setEnabled(true);
                 rb2Personagem.setEnabled(true);
-                personagemSelecionado = 2;
+                personagemSelecionado = 0;
                 rb1Personagem.setSelected(true);
                 onSalvarFilme();
                 onSalvarFala();
+                atualizarTextoBotoes();
+                vvGravacao.stopPlayback();
             }
         });
 
@@ -99,8 +103,10 @@ public class TabFragment3 extends Fragment {
             public void onClick(View v) {
                 rb1Personagem.setEnabled(true);
                 rb2Personagem.setEnabled(true);
-                personagemSelecionado = 2;
+                personagemSelecionado = 0;
                 rb1Personagem.setSelected(true);
+                atualizarTextoBotoes();
+                vvGravacao.stopPlayback();
             }
         });
 
@@ -111,24 +117,31 @@ public class TabFragment3 extends Fragment {
                 boolean personagem1 = R.id.rb1Personagem == checkedId;
                 boolean personagem2 = R.id.rb2Personagem == checkedId;
                 if (personagem1) {
-                    personagemSelecionado = 2;
-                } else {
                     personagemSelecionado = 1;
+                    personagem = 1;
+                    usuario = 0;
+                } if (personagem2) {
+                    personagemSelecionado = 2;
+                    personagem = 0;
+                    usuario = 1;
                 }
                 atualizarTextoBotoes();
             }
         });
+
+        atualizarTextoBotoes();
 
         return view;
     }
 
     private void onOuvirVideo() {
         try {
-            if (personagemSelecionado <= falaQuantidade) {
+            if (personagem < falaQuantidade && usuario < falaQuantidade) {
                 TabFragment1.onStopVideoAssistir();
                 TabFragment2.onStopVideoPraticar();
-                String video = MainActivity.listarFalasIdCena(this.cena).get(personagemSelecionado -1).getVideo();
-                vvGravacao.setVideoURI(Uri.parse(video + String.valueOf(personagemSelecionado) + ".mp4"));
+                TabFragment4.onStopMeuVideoAssistir();
+                String video = MainActivity.listarFalasIdCena(this.cena).get(personagem).getVideo();
+                vvGravacao.setVideoURI(Uri.parse(video));
                 vvGravacao.start();
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
@@ -140,25 +153,27 @@ public class TabFragment3 extends Fragment {
 
     private void onGravarVideo() {
         try {
-            if (personagemSelecionado <= falaQuantidade) {
-                personagemSelecionado++;
+            if (personagem < falaQuantidade && usuario < falaQuantidade) {
                 String local = "/storage/extSdCard/w1-";
                 String falaUsuarioQuantidade = String.valueOf(MainActivity.listarFalasUsuario().size());
                 String extensao = ".mp4";
-                String arquivo = local + falaUsuarioQuantidade + String.valueOf(personagemSelecionado) + extensao;
+                String arquivo = local + falaUsuarioQuantidade + String.valueOf(usuario) + extensao;
                 File file = new File(arquivo);
                 Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                 startActivityForResult(intent, 0);
                 if (filmeUsuario == null) {
-                    int id = MainActivity.listarFilmesUsuario().size()+1;
+                    int idfilme = MainActivity.listarFilmesUsuario().size()+1;
                     int filmeid = MainActivity.listarCenasIdCena(this.cena).get(0).getFilme();
                     int cenaid = MainActivity.listarCenasIdCena(this.cena).get(0).getId();
-                    filmeUsuario = new FilmeUsuario(id, filmeid, cenaid, personagemSelecionado, new Date());
+                    filmeUsuario = new FilmeUsuario(idfilme, filmeid, cenaid, personagemSelecionado, new Date());
                 }
-                falaUsuario = new FalaUsuario(filmeUsuario.getId(), filmeUsuario.getId(), arquivo);
+                int idfala = MainActivity.listarFalasUsuario().size();
+                int filmeidUsuario = filmeUsuario.getId();
+                falaUsuario = new FalaUsuario(idfala, filmeidUsuario, arquivo);
                 falaUsuarios.add(falaUsuario);
-                personagemSelecionado++;
+                usuario++;
+                personagem++;
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
                 btGravacaoGravar.setText("Gravar (Não)");
@@ -183,9 +198,8 @@ public class TabFragment3 extends Fragment {
     }
 
     private void atualizarTextoBotoes() {
-        btGravacaoGravar.setText("Gravar (" + personagemSelecionado + ")");
-        btGravacaoOuvir.setText("Ouvir Personagem (" + personagemSelecionado + ")");
-        btGravacaoSalvar.setText("Salvar (" + personagemSelecionado + ")");
+        btGravacaoGravar.setText("Gravar (Fala: " + (usuario + 1) + ")");
+        btGravacaoOuvir.setText("Ouvir Personagem (Fala: " + (personagem + 1) + ")");
     }
 
     @Override

@@ -46,7 +46,7 @@ public class TabFragment2 extends Fragment {
 
     public static void onPlayVideoPraticar(int video_id){
         try {
-            vvPraticar.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(video_id-1).getVideo() + video_id + ".mp4"));
+            vvPraticar.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(video_id).getVideo()));
             vvPraticar.start();
         } catch (Exception e) {
         }
