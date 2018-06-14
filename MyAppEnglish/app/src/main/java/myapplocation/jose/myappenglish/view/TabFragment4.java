@@ -36,8 +36,11 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.layout_tab4, container, false);
+
         context = view.getContext();
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rvMeusVideos);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(view.getContext());
@@ -68,7 +71,6 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
         final List<Fala> dataSet = MainActivity.listarFalasIdCena(cena);
         try {
             final int[] i = {0};
-            i[0] = 0;
             if (personagem != 1) {
                 vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
                 vvMeusVideos.start();

@@ -3,6 +3,7 @@ package myapplocation.jose.myappenglish.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -50,7 +51,9 @@ public class TabFragment3 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.layout_tab3, container, false);
+
         context = view.getContext();
 
         this.cena = PagerAdapter.getCena();
@@ -88,8 +91,11 @@ public class TabFragment3 extends Fragment {
             public void onClick(View v) {
                 rb1Personagem.setEnabled(true);
                 rb2Personagem.setEnabled(true);
-                personagemSelecionado = 0;
-                rb1Personagem.setSelected(true);
+                personagemSelecionado = 1;
+                personagem = 1;
+                usuario = 0;
+                rb1Personagem.setFocusable(true);
+                rb1Personagem.requestFocus();
                 onSalvarFilme();
                 onSalvarFala();
                 atualizarTextoBotoes();
@@ -103,8 +109,11 @@ public class TabFragment3 extends Fragment {
             public void onClick(View v) {
                 rb1Personagem.setEnabled(true);
                 rb2Personagem.setEnabled(true);
-                personagemSelecionado = 0;
-                rb1Personagem.setSelected(true);
+                personagemSelecionado = 1;
+                personagem = 1;
+                usuario = 0;
+                rb1Personagem.setFocusable(true);
+                rb1Personagem.requestFocus();
                 atualizarTextoBotoes();
                 vvGravacao.stopPlayback();
             }
@@ -129,9 +138,8 @@ public class TabFragment3 extends Fragment {
             }
         });
 
-        atualizarTextoBotoes();
-
         return view;
+
     }
 
     private void onOuvirVideo() {
@@ -172,8 +180,8 @@ public class TabFragment3 extends Fragment {
                 int filmeidUsuario = filmeUsuario.getId();
                 falaUsuario = new FalaUsuario(idfala, filmeidUsuario, arquivo);
                 falaUsuarios.add(falaUsuario);
-                usuario++;
-                personagem++;
+                usuario+=2;
+                personagem+=2;
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
                 btGravacaoGravar.setText("Gravar (Não)");
