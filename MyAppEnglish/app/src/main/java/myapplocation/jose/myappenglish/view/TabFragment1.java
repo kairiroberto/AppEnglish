@@ -35,22 +35,29 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_tab1, container, false);
         context = view.getContext();
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rvAssistir);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(view.getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        this.cena = PagerAdapter.getCena();
+        try {
 
-        mAdapter = new AdapterTabFragment1(MainActivity.listarFalasIdCena(this.cena), view.getContext());
-        mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.rvAssistir);
+            mRecyclerView.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(view.getContext());
+            mRecyclerView.setLayoutManager(mLayoutManager);
 
-        vvAssistir = (VideoView) view.findViewById(R.id.vvAssistir);
-        btFilmePlay = (Button) view.findViewById(R.id.btFilmePlay);
-        btFilmeStop = (Button) view.findViewById(R.id.btFilmeStop);
+            this.cena = PagerAdapter.getCena();
 
-        btFilmePlay.setOnClickListener(this);
-        btFilmeStop.setOnClickListener(this);
+            mAdapter = new AdapterTabFragment1(MainActivity.listarFalasIdCena(this.cena), view.getContext());
+            mRecyclerView.setAdapter(mAdapter);
+
+            vvAssistir = (VideoView) view.findViewById(R.id.vvAssistir);
+            btFilmePlay = (Button) view.findViewById(R.id.btFilmePlay);
+            btFilmeStop = (Button) view.findViewById(R.id.btFilmeStop);
+
+            btFilmePlay.setOnClickListener(this);
+            btFilmeStop.setOnClickListener(this);
+
+        } catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         return view;
     }
@@ -65,8 +72,10 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
     }
 
     public static void onPlayVideoAssistir(final int cena){
-        TabFragment2.onStopVideoPraticar();
         try {
+            TabFragment2.onStopVideoPraticar();
+            TabFragment3.onStopOuvir();
+            TabFragment4.onStopMeuVideoAssistir();
             final int[] i = {0};
             vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i[0]).getVideo()));
             vvAssistir.start();
@@ -83,6 +92,7 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
                     }
                 }
             });
+
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }

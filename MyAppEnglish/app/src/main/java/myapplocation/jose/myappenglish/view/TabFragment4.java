@@ -36,25 +36,30 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.layout_tab4, container, false);
 
         context = view.getContext();
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rvMeusVideos);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(view.getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        try {
 
-        this.cena = PagerAdapter.getCena();
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.rvMeusVideos);
+            mRecyclerView.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(view.getContext());
+            mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new AdapterTabFragment4(MainActivity.listarFilmesUsuario(), view.getContext());
-        mRecyclerView.setAdapter(mAdapter);
+            this.cena = PagerAdapter.getCena();
 
-        vvMeusVideos = (VideoView) view.findViewById(R.id.vvMeusVideos);
-        btMeusVideosStop = (Button) view.findViewById(R.id.btMeusVideosStop);
+            mAdapter = new AdapterTabFragment4(MainActivity.listarFilmesUsuario(), view.getContext());
+            mRecyclerView.setAdapter(mAdapter);
 
-        btMeusVideosStop.setOnClickListener(this);
+            vvMeusVideos = (VideoView) view.findViewById(R.id.vvMeusVideos);
+            btMeusVideosStop = (Button) view.findViewById(R.id.btMeusVideosStop);
+
+            btMeusVideosStop.setOnClickListener(this);
+
+        } catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         return view;
     }
@@ -62,19 +67,22 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btMeusVideosStop) {
+            TabFragment1.onStopVideoAssistir();
+            TabFragment2.onStopVideoPraticar();
+            TabFragment3.onStopOuvir();
             onStopMeuVideoAssistir();
         }
     }
 
     public static void onPlayMeuVideoAssistir(final int meuFilme, final int cena, final int personagem){
-        final List<FalaUsuario> mDataSet = MainActivity.listarFalasUsuarioIdFilme(meuFilme);
-        final List<Fala> dataSet = MainActivity.listarFalasIdCena(cena);
         try {
+            final List<FalaUsuario> mDataSet = MainActivity.listarFalasUsuarioIdFilme(meuFilme);
+            final List<Fala> dataSet = MainActivity.listarFalasIdCena(cena);
             final int[] i = {0};
-            if (personagem != 1) {
+            if (personagem == 1) {
                 vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
                 vvMeusVideos.start();
-            } else {
+            } else if (personagem == 2) {
                 vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
                 vvMeusVideos.start();
             }
@@ -86,8 +94,7 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
                         if (personagem == 1 && (i[0] % 2 == 0)) {
                             vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
                             vvMeusVideos.start();
-                        } else {
-
+                        } else if (personagem == 2 && (i[0] % 2 != 0)) {
                             vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
                             vvMeusVideos.start();
                         }

@@ -35,7 +35,7 @@ public class TabFragment3 extends Fragment {
     private Button btGravacaoGravar;
     private Button btGravacaoSalvar;
     private Button btGravacaoCancelar;
-    private VideoView vvGravacao;
+    private static VideoView vvGravacao;
     private RadioButton rb1Personagem;
     private RadioButton rb2Personagem;
     private RadioGroup rgPersonagens;
@@ -56,87 +56,98 @@ public class TabFragment3 extends Fragment {
 
         context = view.getContext();
 
-        this.cena = PagerAdapter.getCena();
+        try {
 
-        this.falaQuantidade = MainActivity.listarFalasIdCena(this.cena).size();
+            this.cena = PagerAdapter.getCena();
 
-        vvGravacao = (VideoView) view.findViewById(R.id.vvGravacao);
+            this.falaQuantidade = MainActivity.listarFalasIdCena(this.cena).size();
 
-        rb1Personagem = (RadioButton) view.findViewById(R.id.rb1Personagem);
-        rb2Personagem = (RadioButton) view.findViewById(R.id.rb2Personagem);
+            vvGravacao = (VideoView) view.findViewById(R.id.vvGravacao);
 
-        btGravacaoOuvir = (Button) view.findViewById(R.id.btGravacaoOuvir);
-        btGravacaoOuvir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rb1Personagem.setEnabled(false);
-                rb2Personagem.setEnabled(false);
-                onOuvirVideo();
-            }
-        });
+            rb1Personagem = (RadioButton) view.findViewById(R.id.rb1Personagem);
+            rb2Personagem = (RadioButton) view.findViewById(R.id.rb2Personagem);
 
-        btGravacaoGravar = (Button) view.findViewById(R.id.btGravacaoGravar);
-        btGravacaoGravar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rb1Personagem.setEnabled(false);
-                rb2Personagem.setEnabled(false);
-                onGravarVideo();
-            }
-        });
+            btGravacaoOuvir = (Button) view.findViewById(R.id.btGravacaoOuvir);
+            btGravacaoOuvir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rb1Personagem.setEnabled(false);
+                    rb2Personagem.setEnabled(false);
+                    onOuvirVideo();
+                }
+            });
 
-        btGravacaoSalvar = (Button) view.findViewById(R.id.btGravacaoSalvar);
-        btGravacaoSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rb1Personagem.setEnabled(true);
-                rb2Personagem.setEnabled(true);
-                personagemSelecionado = 1;
-                personagem = 1;
-                usuario = 0;
-                rb1Personagem.setFocusable(true);
-                rb1Personagem.requestFocus();
-                onSalvarFilme();
-                onSalvarFala();
-                atualizarTextoBotoes();
-                vvGravacao.stopPlayback();
-            }
-        });
+            btGravacaoGravar = (Button) view.findViewById(R.id.btGravacaoGravar);
+            btGravacaoGravar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rb1Personagem.setEnabled(false);
+                    rb2Personagem.setEnabled(false);
+                    btGravacaoCancelar.setEnabled(true);
+                    onGravarVideo();
+                }
+            });
 
-        btGravacaoCancelar = (Button) view.findViewById(R.id.btGravacaoCancelar);
-        btGravacaoCancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rb1Personagem.setEnabled(true);
-                rb2Personagem.setEnabled(true);
-                personagemSelecionado = 1;
-                personagem = 1;
-                usuario = 0;
-                rb1Personagem.setFocusable(true);
-                rb1Personagem.requestFocus();
-                atualizarTextoBotoes();
-                vvGravacao.stopPlayback();
-            }
-        });
-
-        rgPersonagens = (RadioGroup) view.findViewById(R.id.rgPersonagens);
-        rgPersonagens.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                boolean personagem1 = R.id.rb1Personagem == checkedId;
-                boolean personagem2 = R.id.rb2Personagem == checkedId;
-                if (personagem1) {
+            btGravacaoSalvar = (Button) view.findViewById(R.id.btGravacaoSalvar);
+            btGravacaoSalvar.setEnabled(false);
+            btGravacaoSalvar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rb1Personagem.setEnabled(true);
+                    rb2Personagem.setEnabled(true);
                     personagemSelecionado = 1;
                     personagem = 1;
                     usuario = 0;
-                } if (personagem2) {
-                    personagemSelecionado = 2;
-                    personagem = 0;
-                    usuario = 1;
+                    rb1Personagem.setFocusable(true);
+                    rb1Personagem.requestFocus();
+                    onSalvarFilme();
+                    onSalvarFala();
+                    atualizarTextoBotoes();
+                    vvGravacao.stopPlayback();
+                    btGravacaoSalvar.setEnabled(false);
                 }
-                atualizarTextoBotoes();
-            }
-        });
+            });
+
+            btGravacaoCancelar = (Button) view.findViewById(R.id.btGravacaoCancelar);
+            btGravacaoCancelar.setEnabled(false);
+            btGravacaoCancelar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rb1Personagem.setEnabled(true);
+                    rb2Personagem.setEnabled(true);
+                    personagemSelecionado = 1;
+                    personagem = 1;
+                    usuario = 0;
+                    rb1Personagem.setFocusable(true);
+                    rb1Personagem.requestFocus();
+                    atualizarTextoBotoes();
+                    vvGravacao.stopPlayback();
+                    btGravacaoCancelar.setEnabled(false);
+                }
+            });
+
+            rgPersonagens = (RadioGroup) view.findViewById(R.id.rgPersonagens);
+            rgPersonagens.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                    boolean personagem1 = R.id.rb1Personagem == checkedId;
+                    boolean personagem2 = R.id.rb2Personagem == checkedId;
+                    if (personagem1) {
+                        personagemSelecionado = 1;
+                        personagem = 1;
+                        usuario = 0;
+                    } if (personagem2) {
+                        personagemSelecionado = 2;
+                        personagem = 0;
+                        usuario = 1;
+                    }
+                    atualizarTextoBotoes();
+                }
+            });
+
+        } catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         return view;
 
@@ -144,6 +155,9 @@ public class TabFragment3 extends Fragment {
 
     private void onOuvirVideo() {
         try {
+            TabFragment1.onStopVideoAssistir();
+            TabFragment2.onStopVideoPraticar();
+            TabFragment4.onStopMeuVideoAssistir();
             if (personagem < falaQuantidade && usuario < falaQuantidade) {
                 TabFragment1.onStopVideoAssistir();
                 TabFragment2.onStopVideoPraticar();
@@ -153,7 +167,11 @@ public class TabFragment3 extends Fragment {
                 vvGravacao.start();
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
+                btGravacaoGravar.setText("Gravar (Não)");
+                btGravacaoOuvir.setText("Ouvir Personagem (Não)");
+                btGravacaoSalvar.setText("Salvar (Sim)");
             }
+
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
@@ -161,6 +179,9 @@ public class TabFragment3 extends Fragment {
 
     private void onGravarVideo() {
         try {
+            TabFragment1.onStopVideoAssistir();
+            TabFragment2.onStopVideoPraticar();
+            TabFragment4.onStopMeuVideoAssistir();
             if (personagem < falaQuantidade && usuario < falaQuantidade) {
                 String local = "/storage/extSdCard/w1-";
                 String falaUsuarioQuantidade = String.valueOf(MainActivity.listarFalasUsuario().size());
@@ -187,10 +208,16 @@ public class TabFragment3 extends Fragment {
                 btGravacaoGravar.setText("Gravar (Não)");
                 btGravacaoOuvir.setText("Ouvir Personagem (Não)");
                 btGravacaoSalvar.setText("Salvar (Sim)");
+                btGravacaoSalvar.setEnabled(true);
             }
+
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static void onStopOuvir() {
+        vvGravacao.stopPlayback();
     }
 
     private void onSalvarFala() {

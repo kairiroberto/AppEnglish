@@ -29,23 +29,33 @@ public class TabFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_tab2, container, false);
         this.context = view.getContext();
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rvPraticar);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(view.getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        this.cena = PagerAdapter.getCena();
+        try {
 
-        mAdapter = new AdapterTabFragment2(MainActivity.listarFalasIdCena(this.cena), view.getContext());
-        mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.rvPraticar);
+            mRecyclerView.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(view.getContext());
+            mRecyclerView.setLayoutManager(mLayoutManager);
 
-        vvPraticar = (VideoView) view.findViewById(R.id.vvPraticar);
+            this.cena = PagerAdapter.getCena();
+
+            mAdapter = new AdapterTabFragment2(MainActivity.listarFalasIdCena(this.cena), view.getContext());
+            mRecyclerView.setAdapter(mAdapter);
+
+            vvPraticar = (VideoView) view.findViewById(R.id.vvPraticar);
+
+        } catch (Exception e) {
+
+        }
 
         return view;
     }
 
     public static void onPlayVideoPraticar(int video_id){
         try {
+            TabFragment1.onStopVideoAssistir();
+            TabFragment3.onStopOuvir();
+            TabFragment4.onStopMeuVideoAssistir();
             vvPraticar.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(video_id).getVideo()));
             vvPraticar.start();
         } catch (Exception e) {
