@@ -59,7 +59,7 @@ public class AdapterTabFragment4 extends RecyclerView.Adapter<AdapterTabFragment
     @Override
     public void onBindViewHolder(final Tab1ViewHolder holder, final int position) {
         //holder.imageView.findViewById(R.id.imageView);
-        holder.frase.setText("Filme:" + mDataset.get(position).getFilme() + " - " + "Cena:" + mDataset.get(position).getCena() + "-" + "Pers.:" + mDataset.get(position).getPersonagem() + "-" + "Tam.: " + MainActivity.listarFalasUsuarioIdFilme(mDataset.get(position).getId()));
+        holder.frase.setText("Filme:" + mDataset.get(position).getFilme() + " - " + "Cena:" + mDataset.get(position).getCena() + "-" + "Pers.:" + mDataset.get(position).getPersonagem());
         if (position % 2 == 0) {
             holder.frase.setTextColor(Color.RED);
         } else {
