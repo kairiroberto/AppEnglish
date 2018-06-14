@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="myapplocation.jose.myappenglish.CenasActivity">
+    tools:context="myapplocation.jose.myappenglish.view.CenasActivity">
 
     <LinearLayout
         android:layout_width="368dp"
@@ -28,64 +28,50 @@
 
                 <ImageView
                     android:id="@+id/imageCena"
-                    android:layout_width="142dp"
+                    android:layout_width="177dp"
                     android:layout_height="131dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     app:srcCompat="@mipmap/ic_launcher" />
 
-                <TableLayout
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TableRow
+                    <TextView
+                        android:id="@+id/tvCena_Nome"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:text="Cena: xxx" />
 
-                        <TextView
-                            android:id="@+id/tvCena_Nome"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cena: xxx" />
-
-                    </TableRow>
-
-                    <TableRow
+                    <TextView
+                        android:id="@+id/tvCena_Cenas"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:text="Cenas: xxx" />
 
-                        <TextView
-                            android:id="@+id/tvCena_Cenas"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cenas: xxx" />
-                    </TableRow>
-
-                    <TableRow
+                    <TextView
+                        android:id="@+id/tvCena_Duracao"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:text="Duração: xx:xx:xx" />
 
-                        <TextView
-                            android:id="@+id/tvCena_Duracao"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Duração: xx:xx:xx" />
-                    </TableRow>
-
-                    <TableRow
+                    <TextView
+                        android:id="@+id/textView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content" />
 
-                        <Button
-                            android:id="@+id/btAcessarCena"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorAccent"
-                            android:text="Acessar"
-                            android:textColor="@android:color/background_light"
-                            android:textSize="18sp"
-                            android:textStyle="bold|italic" />
-                    </TableRow>
-
-                </TableLayout>
+                    <Button
+                        android:id="@+id/btAcessarCena"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:text="Acessar"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="18sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
 
             </GridLayout>
 

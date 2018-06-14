@@ -8,7 +8,7 @@
     tools:context="myapplocation.jose.myappenglish.view.TabActivity">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cvTab2"
+        android:id="@+id/cvTab4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentPadding="10dp"
@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="0dp">
 
         <TextView
-            android:id="@+id/tvTab2"
+            android:id="@+id/tvTab4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />

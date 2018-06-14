@@ -6,12 +6,6 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <TextView
-        android:id="@+id/tvGravar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gravar" />
-
     <VideoView
         android:id="@+id/vvGravacao"
         android:layout_width="match_parent"
@@ -29,8 +23,9 @@
             android:layout_height="match_parent">
 
             <RadioGroup
+                android:id="@+id/rgPersonagens"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <RadioButton
                     android:id="@+id/rb1Personagem"
@@ -53,15 +48,27 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/btGravacaoComecar"
+        android:id="@+id/btGravacaoOuvir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Começar" />
+        android:text="Ouvir Personagem" />
+
+    <Button
+        android:id="@+id/btGravacaoGravar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gravar" />
 
     <Button
         android:id="@+id/btGravacaoSalvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar" />
+
+    <Button
+        android:id="@+id/btGravacaoCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancelar" />
 
 </LinearLayout>

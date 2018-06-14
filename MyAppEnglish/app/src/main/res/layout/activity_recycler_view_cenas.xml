@@ -7,13 +7,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="MyAppEnglish" />
+
     <TextView
         android:id="@+id/textViewCena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_shadow_start_color"
+        android:background="@android:color/black"
         android:text="CENAS"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="36sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="8dp"
