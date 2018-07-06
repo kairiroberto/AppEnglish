@@ -15,7 +15,11 @@
         android:id="@+id/btMeusVideosStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parar" />
+        android:background="@color/colorAccent"
+        android:text="Parar"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvMeusVideos"

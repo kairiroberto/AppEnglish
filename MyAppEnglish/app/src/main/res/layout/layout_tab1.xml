@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -15,13 +16,23 @@
         android:id="@+id/btFilmePlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Começar" />
+        android:background="@color/colorAccent"
+        android:elevation="3dp"
+        android:text="Começar"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btFilmeStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parar" />
+        android:background="@android:color/holo_orange_light"
+        android:elevation="3dp"
+        android:text="Parar"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvAssistir"

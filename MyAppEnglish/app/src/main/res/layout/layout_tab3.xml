@@ -51,24 +51,39 @@
         android:id="@+id/btGravacaoOuvir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ouvir Personagem" />
+        android:background="@color/colorAccent"
+        android:text="Ouvir Personagem"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btGravacaoGravar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gravar" />
+        android:background="@android:color/holo_orange_light"
+        android:text="Gravar"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btGravacaoSalvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Salvar" />
+        android:background="@android:color/holo_green_light"
+        android:text="Salvar"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btGravacaoCancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancelar" />
+        android:background="@android:color/holo_green_dark"
+        android:text="Cancelar"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
