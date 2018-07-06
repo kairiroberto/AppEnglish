@@ -73,22 +73,21 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
 
     public static void onPlayVideoAssistir(final int cena){
         try {
-            TabFragment2.onStopVideoPraticar();
+            /*TabFragment2.onStopVideoPraticar();
             TabFragment3.onStopOuvir();
-            TabFragment4.onStopMeuVideoAssistir();
+            TabFragment4.onStopMeuVideoAssistir();*/
             final int[] i = {0};
             vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i[0]).getVideo()));
             vvAssistir.start();
             Toast.makeText(context, "Fala: " + String.valueOf(i[0] + 1) + "/" + String.valueOf(MainActivity.listarFalasIdCena(cena).size()), Toast.LENGTH_SHORT).show();
-            i[0]++;
             vvAssistir.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
+                    i[0]++;
                     if (i[0] < MainActivity.listarFalasIdCena(cena).size()) {
                         Toast.makeText(context, "Fala: " + String.valueOf(i[0] + 1) + "/" + MainActivity.listarFalasIdCena(cena).size(), Toast.LENGTH_SHORT).show();
                         vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i[0]).getVideo()));
                         vvAssistir.start();
-                        i[0]++;
                     }
                 }
             });

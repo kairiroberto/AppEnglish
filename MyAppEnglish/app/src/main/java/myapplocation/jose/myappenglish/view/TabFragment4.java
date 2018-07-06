@@ -67,10 +67,11 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btMeusVideosStop) {
-            TabFragment1.onStopVideoAssistir();
+            /*TabFragment1.onStopVideoAssistir();
             TabFragment2.onStopVideoPraticar();
             TabFragment3.onStopOuvir();
-            onStopMeuVideoAssistir();
+            onStopMeuVideoAssistir();*/
+
         }
     }
 
@@ -79,6 +80,7 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
             final List<FalaUsuario> mDataSet = MainActivity.listarFalasUsuarioIdFilme(meuFilme);
             final List<Fala> dataSet = MainActivity.listarFalasIdCena(cena);
             final int[] i = {0};
+
             if (personagem == 1) {
                 vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
                 vvMeusVideos.start();
@@ -86,20 +88,33 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
                 vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
                 vvMeusVideos.start();
             }
-            i[0]++;
+
+            Toast.makeText(context, (i[0]+1) + "/" + dataSet.size(), Toast.LENGTH_SHORT).show();
+
             vvMeusVideos.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if (i[0] < mDataSet.size() && i[0] < dataSet.size()) {
-                        if (personagem == 1 && (i[0] % 2 == 0)) {
-                            vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
-                            vvMeusVideos.start();
-                        } else if (personagem == 2 && (i[0] % 2 != 0)) {
-                            vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
-                            vvMeusVideos.start();
+                    i[0]++;
+                    if (i[0] < dataSet.size()) {
+                        if (personagem == 1) {
+                            if (i[0] % 2 == 0) {
+                                vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
+                                vvMeusVideos.start();
+                            } else {
+                                vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
+                                vvMeusVideos.start();
+                            }
+                        } else if (personagem == 2) {
+                            if (i[0] % 2 != 0) {
+                                vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
+                                vvMeusVideos.start();
+                            } else {
+                                vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
+                                vvMeusVideos.start();
+                            }
                         }
-                        i[0]++;
                     }
+                    Toast.makeText(context, (i[0]+1) + "/" + dataSet.size(), Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (Exception e) {

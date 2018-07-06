@@ -69,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
         return myDataset;
     }
 
+
+
+
+
+
+
+
+
+
     public static List<Filme> listarFilmes() {
         List<Filme> myDataset = new ArrayList<Filme>();
 
@@ -118,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Fala> myDataset = new ArrayList<Fala>();
 
-        String video1 = "sdcard/Download/f1-";
+        String video1 = "storage/emulated/0/myAppEnglish/f1-";
         myDataset.add(new Fala(1, 1, "Fala 1: Vaider: No I am your father. \n(Vaider: Não Eu sou o seu pai.)", video1 + "1.mp4"));
         myDataset.add(new Fala(2, 1, "Fala 2: Luke: No. No. No. That's not true. It's impossible. \n(Luke: Não. Não. Não é verdade. É impossível.)", video1 + "2.mp4"));
         myDataset.add(new Fala(3, 1, "Fala 3: Vaider: Listen your heart. You know it's true. \n(Vaider: Ouça o seu coração. Sabe que é verdade.)", video1 + "3.mp4"));
@@ -130,14 +139,14 @@ public class MainActivity extends AppCompatActivity {
         myDataset.add(new Fala(9, 1, "Fala 9: Vaider: Come with me. \n(Vaider: Venha comigo.)", video1 + "9.mp4"));
         myDataset.add(new Fala(10, 1, "Fala 10: Vaider: It's your only way out. \n(Vaider: É sua única saída.)", video1 + "10.mp4"));
 
-        String video2 = "sdcard/Download/f2-";
+        String video2 = "storage/emulated/0/myAppEnglish/f2-";
         myDataset.add(new Fala(11, 2, "Fala 8: ... \n(...)", video2));
         myDataset.add(new Fala(12, 2, "Fala 8: ... \n(...)", video2));
 
-        String video3 = "sdcard/Download/f3-";
+        String video3 = "storage/emulated/0/myAppEnglish/f3-";
         myDataset.add(new Fala(13, 3, "Fala 8: ... \n(...)", ""));
 
-        String video4 = "sdcard/Download/f4-";
+        String video4 = "storage/emulated/0/myAppEnglish/f4-";
         myDataset.add(new Fala(14, 4, "Fala 8: ... \n(...)", ""));
 
         return myDataset;

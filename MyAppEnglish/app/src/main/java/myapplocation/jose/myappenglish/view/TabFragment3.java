@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -155,13 +157,10 @@ public class TabFragment3 extends Fragment {
 
     private void onOuvirVideo() {
         try {
-            TabFragment1.onStopVideoAssistir();
+            /*TabFragment1.onStopVideoAssistir();
             TabFragment2.onStopVideoPraticar();
-            TabFragment4.onStopMeuVideoAssistir();
+            TabFragment4.onStopMeuVideoAssistir();*/
             if (personagem < falaQuantidade && usuario < falaQuantidade) {
-                TabFragment1.onStopVideoAssistir();
-                TabFragment2.onStopVideoPraticar();
-                TabFragment4.onStopMeuVideoAssistir();
                 String video = MainActivity.listarFalasIdCena(this.cena).get(personagem).getVideo();
                 vvGravacao.setVideoURI(Uri.parse(video));
                 vvGravacao.start();
@@ -173,36 +172,51 @@ public class TabFragment3 extends Fragment {
             }
 
         } catch (Exception e) {
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
     private void onGravarVideo() {
         try {
-            TabFragment1.onStopVideoAssistir();
+            /*TabFragment1.onStopVideoAssistir();
             TabFragment2.onStopVideoPraticar();
-            TabFragment4.onStopMeuVideoAssistir();
+            TabFragment4.onStopMeuVideoAssistir();*/
             if (personagem < falaQuantidade && usuario < falaQuantidade) {
-                String local = "/storage/extSdCard/w1-";
-                String falaUsuarioQuantidade = String.valueOf(MainActivity.listarFalasUsuario().size());
+
+                String local = "sdcard/myAppEnglish";
+                String idfalaUsuarioSize = String.valueOf(MainActivity.listarFalasUsuario().size());
                 String extensao = ".mp4";
-                String arquivo = local + falaUsuarioQuantidade + String.valueOf(usuario) + extensao;
-                File file = new File(arquivo);
+
+                //String arquivo = "/myAppEnglish/r" + idfalaUsuarioSize + "-" + String.valueOf(usuario) + extensao;
+                String arquivo = "/myAppEnglish/r" + idfalaUsuarioSize + "-" + String.valueOf(usuario) + extensao;
+
+                File mediaFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + arquivo);
+
+                //Toast.makeText(context, String.valueOf(mediaFile), Toast.LENGTH_LONG).show();
+
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder ();
+                StrictMode.setVmPolicy (builder.build ());
+
                 Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mediaFile));
+
                 startActivityForResult(intent, 0);
+
                 if (filmeUsuario == null) {
                     int idfilme = MainActivity.listarFilmesUsuario().size()+1;
                     int filmeid = MainActivity.listarCenasIdCena(this.cena).get(0).getFilme();
                     int cenaid = MainActivity.listarCenasIdCena(this.cena).get(0).getId();
                     filmeUsuario = new FilmeUsuario(idfilme, filmeid, cenaid, personagemSelecionado, new Date());
                 }
+
                 int idfala = MainActivity.listarFalasUsuario().size();
                 int filmeidUsuario = filmeUsuario.getId();
-                falaUsuario = new FalaUsuario(idfala, filmeidUsuario, arquivo);
+                falaUsuario = new FalaUsuario(idfala, filmeidUsuario, String.valueOf(mediaFile));
                 falaUsuarios.add(falaUsuario);
                 usuario+=2;
                 personagem+=2;
+
             } else {
                 Toast.makeText(context, "O vídeo não tem mais falas. Salve ou cancele!", Toast.LENGTH_SHORT).show();
                 btGravacaoGravar.setText("Gravar (Não)");
@@ -212,7 +226,7 @@ public class TabFragment3 extends Fragment {
             }
 
         } catch (Exception e) {
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
