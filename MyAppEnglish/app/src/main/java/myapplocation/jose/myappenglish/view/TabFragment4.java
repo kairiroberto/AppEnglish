@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static VideoView vvMeusVideos;
+    public static VideoView vvMeusVideos;
     private Button btMeusVideosStop;
     private static Context context;
     private int cena = 0;
@@ -75,54 +76,64 @@ public class TabFragment4 extends Fragment implements View.OnClickListener {
         }
     }
 
-    public static void onPlayMeuVideoAssistir(final int meuFilme, final int cena, final int personagem){
+    public static void onPlayMeuVideoAssistir(final int meuFilme, final int cena, final int personagem) {
         try {
+
             final List<FalaUsuario> mDataSet = MainActivity.listarFalasUsuarioIdFilme(meuFilme);
             final List<Fala> dataSet = MainActivity.listarFalasIdCena(cena);
-            final int[] i = {0};
+
+            final int[] i_cena = {0};
+            final int[] i_usuario = {0};
+            final Uri[] uri = {null};
 
             if (personagem == 1) {
-                vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
-                vvMeusVideos.start();
-            } else if (personagem == 2) {
-                vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
-                vvMeusVideos.start();
+                uri[0] = Uri.parse(mDataSet.get(i_usuario[0]).getLocalGravacao());
+            } else {
+                uri[0] = Uri.parse(dataSet.get(i_cena[0]).getVideo());
             }
 
-            Toast.makeText(context, (i[0]+1) + "/" + dataSet.size(), Toast.LENGTH_SHORT).show();
+            if (uri != null) {
+                vvMeusVideos.setVideoURI(uri[0]);
+                vvMeusVideos.start();
+            }
 
             vvMeusVideos.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    i[0]++;
-                    if (i[0] < dataSet.size()) {
+                    if (i_usuario[0] < mDataSet.size()) {
                         if (personagem == 1) {
-                            if (i[0] % 2 == 0) {
-                                vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
-                                vvMeusVideos.start();
+                            if (uri[0].getPath().equals(mDataSet.get(i_usuario[0]).getLocalGravacao())) {
+                                if (i_usuario[0] == 0) {
+                                    i_cena[0]++;
+                                } else {
+                                    i_cena[0] = i_cena[0] + 2;
+                                }
+                                uri[0] = Uri.parse(dataSet.get(i_cena[0]).getVideo());
+                                i_usuario[0]++;
                             } else {
-                                vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
-                                vvMeusVideos.start();
+                                uri[0] = Uri.parse(mDataSet.get(i_usuario[0]).getLocalGravacao());
                             }
-                        } else if (personagem == 2) {
-                            if (i[0] % 2 != 0) {
-                                vvMeusVideos.setVideoURI(Uri.parse(mDataSet.get(i[0]).getLocalGravacao()));
-                                vvMeusVideos.start();
+                        } else {
+                            if (uri[0].getPath().equals(dataSet.get(i_cena[0]).getVideo())) {
+                                uri[0] = Uri.parse(mDataSet.get(i_usuario[0]).getLocalGravacao());
+                                i_usuario[0]++;
+                                i_cena[0] = i_cena[0] + 2;
                             } else {
-                                vvMeusVideos.setVideoURI(Uri.parse(dataSet.get(i[0]).getVideo()));
-                                vvMeusVideos.start();
+                                uri[0] = Uri.parse(dataSet.get(i_cena[0]).getVideo());
                             }
                         }
+                        vvMeusVideos.setVideoURI(uri[0]);
+                        vvMeusVideos.start();
                     }
-                    Toast.makeText(context, (i[0]+1) + "/" + dataSet.size(), Toast.LENGTH_SHORT).show();
                 }
             });
+
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    public static void onStopMeuVideoAssistir(){
+    public static void onStopMeuVideoAssistir() {
         try {
             vvMeusVideos.stopPlayback();
         } catch (Exception e) {
