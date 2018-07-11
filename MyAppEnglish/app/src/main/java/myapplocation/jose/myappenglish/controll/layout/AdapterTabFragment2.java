@@ -26,6 +26,7 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
     private List<Fala> mDataset;
     private Context context;
     private final Handler handler = new Handler();
+    private int positionCorBlue = 0;
 
     public static class Tab1ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -71,15 +72,7 @@ public class AdapterTabFragment2 extends RecyclerView.Adapter<AdapterTabFragment
             @Override
             public void onClick(View v) {
                 TabFragment2.onPlayVideoPraticar(position);
-                if (holder.frase.getCurrentTextColor() == Color.BLUE) {
-                    if (position % 2 == 0) {
-                        holder.frase.setTextColor(Color.RED);
-                    } else {
-                        holder.frase.setTextColor(Color.BLACK);
-                    }
-                } else {
-                    holder.frase.setTextColor(Color.BLUE);
-                }
+                holder.frase.setTextColor(Color.BLUE);
             }
         });
 

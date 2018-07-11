@@ -13,12 +13,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import myapplocation.jose.myappenglish.R;
-import myapplocation.jose.myappenglish.model.Fala;
 import myapplocation.jose.myappenglish.model.FilmeUsuario;
-import myapplocation.jose.myappenglish.view.MainActivity;
-import myapplocation.jose.myappenglish.view.TabFragment1;
-import myapplocation.jose.myappenglish.view.TabFragment2;
-import myapplocation.jose.myappenglish.view.TabFragment4;
+import myapplocation.jose.myappenglish.view.FragmentAssistir;
 
 /**
  * Created by JOSE on 24-5-18.
@@ -68,7 +64,7 @@ public class AdapterTabFragment4 extends RecyclerView.Adapter<AdapterTabFragment
         holder.frase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TabFragment4.onPlayMeuVideoAssistir(mDataset.get(position).getId(), mDataset.get(position).getCena(), mDataset.get(position).getPersonagem());
+                FragmentAssistir.onPlayMeuVideoAssistir(mDataset.get(position).getId(), mDataset.get(position).getCena(), mDataset.get(position).getPersonagem());
                 if (holder.frase.getCurrentTextColor() == Color.BLUE) {
                     if (position % 2 == 0) {
                         holder.frase.setTextColor(Color.RED);
