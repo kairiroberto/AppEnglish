@@ -19,6 +19,7 @@ import android.widget.VideoView;
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.controll.layout.AdapterTabFragment1;
 import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
+import myapplocation.jose.myappenglish.model.dao.FalaDao;
 
 public class TabFragment1 extends Fragment implements View.OnClickListener {
 
@@ -45,7 +46,7 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
 
             this.cena = PagerAdapter.getCena();
 
-            mAdapter = new AdapterTabFragment1(MainActivity.listarFalasIdCena(this.cena), view.getContext());
+            mAdapter = new AdapterTabFragment1(FalaDao.listarFalasIdCena(this.cena), view.getContext());
             mRecyclerView.setAdapter(mAdapter);
 
             vvAssistir = (VideoView) view.findViewById(R.id.vvAssistir);
@@ -75,18 +76,18 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
         try {
             /*TabFragment2.onStopVideoPraticar();
             TabFragment3.onStopOuvir();
-            TabFragment4.onStopMeuVideoAssistir();*/
+            FragmentAssistir.onStopMeuVideoAssistir();*/
             final int[] i = {0};
-            vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i[0]).getVideo()));
+            vvAssistir.setVideoURI(Uri.parse(FalaDao.listarFalasIdCena(cena).get(i[0]).getVideo()));
             vvAssistir.start();
-            Toast.makeText(context, "Fala: " + String.valueOf(i[0] + 1) + "/" + String.valueOf(MainActivity.listarFalasIdCena(cena).size()), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fala: " + String.valueOf(i[0] + 1) + "/" + String.valueOf(FalaDao.listarFalasIdCena(cena).size()), Toast.LENGTH_SHORT).show();
             vvAssistir.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     i[0]++;
-                    if (i[0] < MainActivity.listarFalasIdCena(cena).size()) {
-                        Toast.makeText(context, "Fala: " + String.valueOf(i[0] + 1) + "/" + MainActivity.listarFalasIdCena(cena).size(), Toast.LENGTH_SHORT).show();
-                        vvAssistir.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(i[0]).getVideo()));
+                    if (i[0] < FalaDao.listarFalasIdCena(cena).size()) {
+                        Toast.makeText(context, "Fala: " + String.valueOf(i[0] + 1) + "/" + FalaDao.listarFalasIdCena(cena).size(), Toast.LENGTH_SHORT).show();
+                        vvAssistir.setVideoURI(Uri.parse(FalaDao.listarFalasIdCena(cena).get(i[0]).getVideo()));
                         vvAssistir.start();
                     }
                 }

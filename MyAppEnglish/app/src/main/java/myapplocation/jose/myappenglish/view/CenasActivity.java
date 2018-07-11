@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import myapplocation.jose.myappenglish.controll.layout.AdapterCenas;
 import myapplocation.jose.myappenglish.R;
+import myapplocation.jose.myappenglish.model.dao.CenaDao;
 
 public class CenasActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class CenasActivity extends AppCompatActivity {
                 this.filme = (int) intent.getExtras().get("filme");
             }
 
-            mAdapter = new AdapterCenas(MainActivity.listarCenasIdFilme(this.filme), this);
+            mAdapter = new AdapterCenas(CenaDao.listarCenasIdFilme(this.filme), this);
             mRecyclerView.setAdapter(mAdapter);
         }
         catch (Exception e) {

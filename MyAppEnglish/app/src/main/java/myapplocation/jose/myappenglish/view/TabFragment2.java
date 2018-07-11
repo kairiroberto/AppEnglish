@@ -15,6 +15,7 @@ import android.widget.VideoView;
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.controll.layout.AdapterTabFragment2;
 import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
+import myapplocation.jose.myappenglish.model.dao.FalaDao;
 
 public class TabFragment2 extends Fragment {
 
@@ -39,7 +40,7 @@ public class TabFragment2 extends Fragment {
 
             this.cena = PagerAdapter.getCena();
 
-            mAdapter = new AdapterTabFragment2(MainActivity.listarFalasIdCena(this.cena), view.getContext());
+            mAdapter = new AdapterTabFragment2(FalaDao.listarFalasIdCena(this.cena), view.getContext());
             mRecyclerView.setAdapter(mAdapter);
 
             vvPraticar = (VideoView) view.findViewById(R.id.vvPraticar);
@@ -55,8 +56,8 @@ public class TabFragment2 extends Fragment {
         try {
             /*TabFragment1.onStopVideoAssistir();
             TabFragment3.onStopOuvir();
-            TabFragment4.onStopMeuVideoAssistir();*/
-            vvPraticar.setVideoURI(Uri.parse(MainActivity.listarFalasIdCena(cena).get(video_id).getVideo()));
+            FragmentAssistir.onStopMeuVideoAssistir();*/
+            vvPraticar.setVideoURI(Uri.parse(FalaDao.listarFalasIdCena(cena).get(video_id).getVideo()));
             vvPraticar.start();
         } catch (Exception e) {
         }

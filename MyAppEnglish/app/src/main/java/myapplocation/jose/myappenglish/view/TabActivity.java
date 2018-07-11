@@ -3,6 +3,7 @@ package myapplocation.jose.myappenglish.view;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -15,7 +16,7 @@ import android.widget.Toast;
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
 
-public class TabActivity extends AppCompatActivity {
+public class TabActivity extends FragmentActivity {
 
     private int cena = 0;
 
@@ -35,13 +36,13 @@ public class TabActivity extends AppCompatActivity {
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Assistir"));
         tabLayout.addTab(tabLayout.newTab().setText("Treinar"));
         tabLayout.addTab(tabLayout.newTab().setText("Gravar"));
-        tabLayout.addTab(tabLayout.newTab().setText("Meus \nVídeos"));
+        //tabLayout.addTab(tabLayout.newTab().setText("Meus \nVídeos"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -76,9 +77,6 @@ public class TabActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

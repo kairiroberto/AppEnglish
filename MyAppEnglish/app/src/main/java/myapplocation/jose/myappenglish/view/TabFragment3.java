@@ -30,6 +30,10 @@ import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
 import myapplocation.jose.myappenglish.model.Fala;
 import myapplocation.jose.myappenglish.model.FalaUsuario;
 import myapplocation.jose.myappenglish.model.FilmeUsuario;
+import myapplocation.jose.myappenglish.model.dao.CenaDao;
+import myapplocation.jose.myappenglish.model.dao.FalaDao;
+import myapplocation.jose.myappenglish.model.dao.FalaUsuarioDao;
+import myapplocation.jose.myappenglish.model.dao.FilmeUsuarioDao;
 
 public class TabFragment3 extends Fragment {
 
@@ -62,7 +66,7 @@ public class TabFragment3 extends Fragment {
 
             this.cena = PagerAdapter.getCena();
 
-            this.falaQuantidade = MainActivity.listarFalasIdCena(this.cena).size();
+            this.falaQuantidade = FalaDao.listarFalasIdCena(this.cena).size();
 
             vvGravacao = (VideoView) view.findViewById(R.id.vvGravacao);
 
@@ -159,9 +163,9 @@ public class TabFragment3 extends Fragment {
         try {
             /*TabFragment1.onStopVideoAssistir();
             TabFragment2.onStopVideoPraticar();
-            TabFragment4.onStopMeuVideoAssistir();*/
+            FragmentAssistir.onStopMeuVideoAssistir();*/
             if (personagem < falaQuantidade && usuario < falaQuantidade) {
-                String video = MainActivity.listarFalasIdCena(this.cena).get(personagem).getVideo();
+                String video = FalaDao.listarFalasIdCena(this.cena).get(personagem).getVideo();
                 vvGravacao.setVideoURI(Uri.parse(video));
                 vvGravacao.start();
             } else {
@@ -180,11 +184,11 @@ public class TabFragment3 extends Fragment {
         try {
             /*TabFragment1.onStopVideoAssistir();
             TabFragment2.onStopVideoPraticar();
-            TabFragment4.onStopMeuVideoAssistir();*/
+            FragmentAssistir.onStopMeuVideoAssistir();*/
             if (personagem < falaQuantidade && usuario < falaQuantidade) {
 
                 String local = "sdcard/myAppEnglish";
-                String idfalaUsuarioSize = String.valueOf(MainActivity.listarFalasUsuario().size());
+                String idfalaUsuarioSize = String.valueOf(FalaUsuarioDao.listarFalasUsuario().size());
                 String extensao = ".mp4";
 
                 //String arquivo = "/myAppEnglish/r" + idfalaUsuarioSize + "-" + String.valueOf(usuario) + extensao;
@@ -204,13 +208,13 @@ public class TabFragment3 extends Fragment {
                 startActivityForResult(intent, 0);
 
                 if (filmeUsuario == null) {
-                    int idfilme = MainActivity.listarFilmesUsuario().size()+1;
-                    int filmeid = MainActivity.listarCenasIdCena(this.cena).get(0).getFilme();
-                    int cenaid = MainActivity.listarCenasIdCena(this.cena).get(0).getId();
+                    int idfilme = FilmeUsuarioDao.listarFilmesUsuario().size()+1;
+                    int filmeid = CenaDao.listarCenasIdCena(this.cena).get(0).getFilme();
+                    int cenaid = CenaDao.listarCenasIdCena(this.cena).get(0).getId();
                     filmeUsuario = new FilmeUsuario(idfilme, filmeid, cenaid, personagemSelecionado, new Date());
                 }
 
-                int idfala = MainActivity.listarFalasUsuario().size();
+                int idfala = FalaUsuarioDao.listarFalasUsuario().size();
                 int filmeidUsuario = filmeUsuario.getId();
                 falaUsuario = new FalaUsuario(idfala, filmeidUsuario, String.valueOf(mediaFile));
                 falaUsuarios.add(falaUsuario);
@@ -236,13 +240,13 @@ public class TabFragment3 extends Fragment {
 
     private void onSalvarFala() {
         for (FalaUsuario fu : falaUsuarios) {
-            MainActivity.addFalasUsuario(fu);
+            FalaUsuarioDao.addFalasUsuario(fu);
         }
         falaUsuarios.clear();
     }
 
     private void onSalvarFilme() {
-        MainActivity.addFilmesUsuario(filmeUsuario);
+        FilmeUsuarioDao.addFilmesUsuario(filmeUsuario);
         filmeUsuario = null;
     }
 
