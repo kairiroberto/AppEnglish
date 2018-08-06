@@ -1,5 +1,6 @@
 package myapplocation.jose.myappenglish.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -71,7 +72,7 @@ public class Main2Activity extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.nav_filmes) {
-            fragment = new FragmentFilmes();
+            fragment = new FilmesActivity();
         } else if (id == R.id.nav_meus_filmes) {
             fragment = new FragmentAssistir();
         }

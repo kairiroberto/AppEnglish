@@ -17,11 +17,11 @@ public class FilmeDao {
     public static List<Filme> listarFilmes() {
         List<Filme> myDataset = new ArrayList<Filme>();
 
-        myDataset.add(new Filme(1, "Filme 1", "10", "10:00", R.drawable.vaivsluk));
-        //myDataset.add(new Filme(2, "Filme 2", "20", "20:00", 0));
-        //myDataset.add(new Filme(3, "Filme 3", "30", "30:00", 0));
-        //myDataset.add(new Filme(4, "Filme 4", "40", "40:00", 0));
-        //myDataset.add(new Filme(5, "Filme 5", "50", "50:00", 0));
+        myDataset.add(new Filme(1, "Star War: \nThe Empire Strikes Back", "1", "10:00", R.drawable.vaivsluk));
+        myDataset.add(new Filme(2, "Spider-Man: \nHomecoming", "1", "20:00", R.drawable.ha));
+        myDataset.add(new Filme(3, "Blade Runner", "1", "30:00", R.drawable.br));
+        myDataset.add(new Filme(4, "Mulher \nMaravilha", "1", "40:00", R.drawable.mm));
+        myDataset.add(new Filme(5, "Seven Pounds", "3", "50:00", R.drawable.sp));
 
         return myDataset;
     }
