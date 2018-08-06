@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -39,20 +40,28 @@ public class AdapterCenas extends RecyclerView.Adapter<AdapterCenas.CenasViewHol
 
         public CenasViewHolder(View v, Context context) {
             super(v);
-            this.context = context;
-            cv = (CardView)v.findViewById(R.id.cvCenas);
-            imageCena = (ImageView) v.findViewById(R.id.imageCena);
-            nomeCena = (TextView)v.findViewById(R.id.tvCena_Nome);
-            cenaCena = (TextView)v.findViewById(R.id.tvCena_Cenas);
-            duracaoCena = (TextView)v.findViewById(R.id.tvCena_Duracao);
-            botao = (Button)v.findViewById(R.id.btAcessarCena);
+            try {
+                this.context = context;
+                cv = (CardView)v.findViewById(R.id.cvCenas);
+                imageCena = (ImageView) v.findViewById(R.id.imageCena);
+                nomeCena = (TextView)v.findViewById(R.id.tvCena_Nome);
+                cenaCena = (TextView)v.findViewById(R.id.tvCena_Cenas);
+                duracaoCena = (TextView)v.findViewById(R.id.tvCena_Duracao);
+                botao = (Button)v.findViewById(R.id.btAcessarCena);
+            } catch (Exception e) {
+                Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+            }
         }
 
     }
 
     public AdapterCenas(List<Cena> myDataset, Context context) {
-        mDataset = myDataset;
-        this.context = context;
+        try {
+            mDataset = myDataset;
+            this.context = context;
+        } catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
