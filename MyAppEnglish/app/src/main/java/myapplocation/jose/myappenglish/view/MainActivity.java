@@ -1,12 +1,15 @@
 package myapplocation.jose.myappenglish.view;
 
+import android.app.DownloadManager;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.AttributeSet;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 /*import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,17 +23,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;*/
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 import myapplocation.jose.myappenglish.R;
-import myapplocation.jose.myappenglish.model.Cena;
-import myapplocation.jose.myappenglish.model.Fala;
-import myapplocation.jose.myappenglish.model.FalaUsuario;
-import myapplocation.jose.myappenglish.model.Filme;
-import myapplocation.jose.myappenglish.model.FilmeUsuario;
 import myapplocation.jose.myappenglish.model.dao.CenaDao;
 import myapplocation.jose.myappenglish.model.dao.FalaDao;
 import myapplocation.jose.myappenglish.model.dao.FilmeDao;
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     /*private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;*/
+    DownloadManager downloadManager;
+    ProgressBar progressBar;
+    File folder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +53,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final File folder = new File(Environment.getExternalStorageDirectory() + "/myAppEnglish");
-
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
+        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+        progressBar.setMax(10);
 
         //doAuthentication();
 
@@ -61,8 +64,31 @@ public class MainActivity extends AppCompatActivity {
 
         FalaDao.listarFalas();
 
+        downloadFile();
+
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
+    }
+
+    private void downloadFile() {
+        String pasta = null;
+
+        try {
+            folder = new File(Environment.getExternalStorageDirectory().getPath() + "/myAppEnglish/" + pasta);
+            if (!folder.exists() || folder.getUsableSpace() == 0 || folder.getTotalSpace() == 0) {
+                folder.mkdir();
+            }
+            downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+            Uri uri = Uri.parse("http://www.kairiroberto.com/myAppEnglish/" + pasta + "/" + pasta +"-1.mp4");
+            DownloadManager.Request request = new DownloadManager.Request(uri);
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setDestinationInExternalFilesDir(MainActivity.this, folder.toString(), pasta + "-1.mp4");
+            Long referenceLong = downloadManager.enqueue(request);
+            progressBar.setProgress(1);
+            Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 
     /*private void doAuthentication() {
