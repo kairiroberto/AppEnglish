@@ -1,0 +1,11 @@
+Fala 1: Tim Thomas: Here's my card. If anyone on the Recipe calls you, call me right away! (Aqui está meu cartão. Se alguém da Receita te ligar, ligue para mim, imediatamente!)
+
+Fala 2: Emily Posa: Right. Thanks. (Certo. Obrigada.)
+
+Fala 3: Tim Thomas: Thank you. All right then. (Eu que agradeço. Então tá.)
+
+Fala 4: Emily Posa: Mr. Thomas? Why do I get the impression that you're doing me a huge favor? (Sr. Thomas? Por que eu tenho a impressão de que você está me fazendo um enorme favor?)
+
+Fala 5: Tim Thomas: Because I get the impression that you really deserve it. (Porque eu tenho a impressão de que você realmente merece.)
+
+Fala 6: Emily Posa: ...

@@ -1,0 +1,15 @@
+Fala 1: Tim Thomas: You look great. (Você está ótima.)
+
+Fala 2: Holly Apelgren: Am I? I feel great. How are you? (Estou? Eu me sinto ótima. Como você está?) 
+
+Fala 3: Tim Thomas: I'm fine. I need a favor. (Eu estou muito bem. Preciso de um favor.)
+
+Fala 4: Holly Apelgren: Whatever you want, just ask me. (O que você quiser, é só me pedir.)
+
+Fala 5: Tim Thomas: I need a name. Someone in the system. Someone who is going through difficult times. That you need help, but be very proud to ask. (Eu preciso de um nome. Alguém do no sistema. Alguém que está passando por termpos difíceis. Que precise de ajuda, mas seja muito orgulhoso para pedir.)
+
+Fala 6: Holly Apelgren: What are you doing? (O que você está fazendo?)
+
+Fala 7: Tim Thomas: I'm helping. I need a name. (Estou ajudando. Eu preciso de um nome.)
+
+Fala 8: Holly Apelgren: Right. (Certo.)
