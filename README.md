@@ -40,3 +40,29 @@ https://medium.com/android-dev-br/listas-com-recyclerview-d3f41e0d653c
 ## Habilite todas as permissões: Camera, Microphone e Storage (Armazenamento).
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar10.JPG)
+
+# CONFIGURAÇÃO DA PASTA COM OS FILMES
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar12.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar13.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar14.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar15.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar16.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar17.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar18.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar19.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar20.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar21.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar22.JPG)
+
+![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar23.JPG)
