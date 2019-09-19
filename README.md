@@ -68,26 +68,50 @@ Parte ainda não concluída. É necessário verificar se o erro está acontecend
 
 # CONFIGURAÇÃO DA PASTA COM OS FILMES
 
+## figura 1
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar12.JPG)
+
+## figura 2
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar13.JPG)
 
+## figura 3
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar14.JPG)
+
+## figura 4
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar15.JPG)
 
+## figura 5
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar16.JPG)
+
+## figura 6
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar17.JPG)
 
+## figura 7
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar18.JPG)
+
+## figura 8
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar19.JPG)
 
+## figura 9
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar20.JPG)
+
+## figura 10
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar21.JPG)
 
+## figura 11
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar22.JPG)
+
+## figura 12
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar23.JPG)
