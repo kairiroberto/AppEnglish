@@ -68,6 +68,8 @@ Parte ainda não concluída. É necessário verificar se o erro está acontecend
 
 # CONFIGURAÇÃO DA PASTA COM OS FILMES
 
+Todas as cenas dos filmes do prototipo estão salvas neste repositório e listadas acima nas pastas f1, f2, f3, f4 e f5. Estas pastas devem ser baixadas para o celular e salvas na pasta indicada na figura .
+
 ## figura 1
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar12.JPG)
