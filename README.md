@@ -1,19 +1,38 @@
 # AppEnglish
 
+# DOCUMENTAÇÃO:
+
 http://gustavopeiretti.com/android-tabs-fragment-recyclerview/
 
 https://developer.android.com/guide/topics/ui/layout/recyclerview
 
 https://medium.com/android-dev-br/listas-com-recyclerview-d3f41e0d653c
 
+# IMAGENS:
+
+## Menu principal:
+A primeira opção permite ao usuário selecionar um filme e a cena. A segunda opção é para assistir os vídeos que o usuário criou.
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar1.JPG)
 
+## Tela de seleção de filmes
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar2.JPG)
+
+## Tela de seleção de cenas do filme selecionado
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar3.JPG)
 
+## Tela para assistir, treinar e gravar
+A tela de assistir permiti que o usuário assista todas as falas da cena de um filme.
+Para assistir basta clicar em 'COMEÇAR' e encerrar a execução em 'PARAR'. Abaixo dos botões é exibida todas as falas em inglês e a tradução para o português.
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar4.JPG)
+
+## Tela para treinar
+Permite ao usuário assistir as falas individualmente. Basta clicar na fala.
+
+## Tela de gravar 
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar5.JPG)
 
@@ -21,7 +40,7 @@ https://medium.com/android-dev-br/listas-com-recyclerview-d3f41e0d653c
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar7.JPG)
 
-# PERMISSÕES
+# PERMISSÕES:
 
 ## Em algumas versões do Android é necessário fazer a configuração das permissões.
 
