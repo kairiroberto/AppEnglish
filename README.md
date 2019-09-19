@@ -32,9 +32,9 @@ Para assistir basta clicar em 'COMEÇAR' e encerrar a execução em 'PARAR'. Aba
 ## Tela para treinar
 Permite ao usuário assistir as falas individualmente. Basta clicar na fala.
 
-## Tela de gravar 
-
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar5.JPG)
+
+## Tela de gravar 
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar6.JPG)
 
