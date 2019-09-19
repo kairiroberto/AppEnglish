@@ -131,6 +131,6 @@ Abrir a pasta '0'. Caso não exista, deve ser criada.
 
 ## figura 12
 
-Abrir a pasta 'myAppEnglish'. Caso não exista, deve ser criada.
+Abrir a pasta 'myAppEnglish'. Caso não exista, deve ser criada. Destro dessa pasta deve ser copiado todas as pastas baixadas: f1, f2, f3, f4 e f5.
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar23.JPG)
