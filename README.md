@@ -36,7 +36,13 @@ Permite ao usuário assistir as falas individualmente. Basta clicar na fala.
 
 ## Tela de gravar 
 
+A tela de gravar permite que o usuário selecione o personagem da cena, ouvir o outro personagem antes de gravar sua fala, ouvir sua falar antes de seguir para as próximas falas, gravar a fala na ordem da cena, salvar a fala na ordem da cena e cancelar a gravação.
+
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar6.JPG)
+
+## Tela de assistir
+
+Parte ainda não concluída. É necessário verificar se o erro está acontecendo na gravação ou na leitura. Verificar se os nomes dos arquivos estão sendo salvos corretamente. Estudar a documentação do android.
 
 ![Alt Text](https://github.com/kairiroberto/AppEnglish/blob/master/Capturar7.JPG)
 
