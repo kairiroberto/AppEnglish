@@ -1,6 +1,7 @@
 package myapplocation.jose.myappenglish.model.dao;
 
 import android.os.Environment;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +14,26 @@ import myapplocation.jose.myappenglish.model.Fala;
 
 public class FalaDao {
 
+    public static List<Fala> listarFalasIdCena(int id) {
+        List<Fala> myDataset = new ArrayList<Fala>();
+        for (Fala f : listarFalas()) {
+            if (f.getCena() == id) {
+                myDataset.add(f);
+            }
+        }
+        return myDataset;
+    }
+
     public static List<Fala> listarFalas() {
 
         List<Fala> myDataset = new ArrayList<Fala>();
 
-        String diretorio = Environment.getExternalStorageDirectory().getPath().toString() + "/myAppEnglish/";
+        String diretorio = Environment.DIRECTORY_DOWNLOADS + "/myAppEnglish/";
 
         String video1 = diretorio + "f1/f1-";
+
+        Log.e("ERRO", video1);
+
         myDataset.add(new Fala(1, 1, "Fala 1: Vaider: No I am your father. \n(Vaider: Não Eu sou o seu pai.)", video1 + "1.mp4"));
         myDataset.add(new Fala(2, 1, "Fala 2: Luke: No. No. No. That's not true. It's impossible. \n(Luke: Não. Não. Não é verdade. É impossível.)", video1 + "2.mp4"));
         myDataset.add(new Fala(3, 1, "Fala 3: Vaider: Listen your heart. You know it's true. \n(Vaider: Ouça o seu coração. Sabe que é verdade.)", video1 + "3.mp4"));
@@ -75,16 +89,6 @@ public class FalaDao {
         myDataset.add(new Fala(41, 7, "Fala 1: Tim Thomas: Focus! Do what you promised me! \n(Concentre-se! Faça o que me promoteu!)", video7 + "1.mp4"));
         myDataset.add(new Fala(42, 7, "Fala 2: Dan: Dan: You think ... You think I'm going to disappoint you, right? I've known you all my life, damn it! Right? That, this ... This is not something you do every day. You see? This is not easy for me. I'll make sure everything goes as planned. Do not worry. \n(Você acha que... Você acha que eu vou te decepcionar, né? Eu te conheço a minha vida inteira, porra! Certo? Isso, isso... Isso não é uma coisa que se faz todo dia. Entende? Isso não é fácil para mim. Vou me certificar que tudo siga o planejado. Não se preocupe.)", video7 + "2.mp4"));
 
-        return myDataset;
-    }
-
-    public static List<Fala> listarFalasIdCena(int id) {
-        List<Fala> myDataset = new ArrayList<Fala>();
-        for (Fala f : listarFalas()) {
-            if (f.getCena() == id) {
-                myDataset.add(f);
-            }
-        }
         return myDataset;
     }
 

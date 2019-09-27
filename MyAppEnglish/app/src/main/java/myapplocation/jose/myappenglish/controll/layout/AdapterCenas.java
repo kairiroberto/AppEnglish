@@ -57,7 +57,7 @@ public class AdapterCenas extends RecyclerView.Adapter<AdapterCenas.CenasViewHol
 
     public AdapterCenas(List<Cena> myDataset, Context context) {
         try {
-            mDataset = myDataset;
+            this.mDataset = myDataset;
             this.context = context;
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();

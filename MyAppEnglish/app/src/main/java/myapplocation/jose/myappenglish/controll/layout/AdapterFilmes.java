@@ -51,7 +51,7 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.FilmesView
     }
 
     public AdapterFilmes(List<Filme> myDataset, Context context) {
-        mDataset = myDataset;
+        this.mDataset = myDataset;
         this.context = context;
     }
 

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +33,26 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
     private Button btFilmeStop;
     private static Context context;
     private int cena = 0;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        final String[] s = Environment.getExternalStorageDirectory().list();
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < s.length; i++) {
+                    try {
+                        Thread.sleep(Toast.LENGTH_LONG);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(context, s[i], Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        t.start();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +81,6 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
-
         return view;
     }
 

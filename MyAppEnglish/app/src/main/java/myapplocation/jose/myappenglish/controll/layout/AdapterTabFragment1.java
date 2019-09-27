@@ -45,7 +45,7 @@ public class AdapterTabFragment1 extends RecyclerView.Adapter<AdapterTabFragment
     }
 
     public AdapterTabFragment1(List<Fala> myDataset, Context context) {
-        mDataset = myDataset;
+        this.mDataset = myDataset;
         this.context = context;
     }
 

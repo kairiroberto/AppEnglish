@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import myapplocation.jose.myappenglish.R;
 import myapplocation.jose.myappenglish.controll.layout.PagerAdapter;
+import myapplocation.jose.myappenglish.model.dao.FalaDao;
 
 public class TabActivity extends FragmentActivity {
 
